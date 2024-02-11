@@ -49,16 +49,19 @@ func (w *worker) startLoop() {
 			expr := new(models.Expression)
 			err := expr.UnmarshalBinary(input.Body)
 			expr.Err = err
+
 			w.handler(expr)
 			fmt.Println(expr)
 
 			body, err := expr.MarshalBinary()
+			fmt.Println(string(body), "должно выйти")
+
 			if err != nil {
 				panic(err)
 			}
 			w.rabbit.Ch.PublishWithContext(w.ctx, "", input.ReplyTo, false, false, amqp.Publishing{
 				ContentType:   "application/json",
-				Body:          body,
+				Body:          []byte(fmt.Sprintf("%s%s", string(body), "wwl,bwb")),
 				CorrelationId: input.CorrelationId,
 			})
 			w.lastTouch = time.Now()

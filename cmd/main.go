@@ -12,7 +12,6 @@ import (
 	"fmt"
 
 	amqp "github.com/rabbitmq/amqp091-go"
-
 	"github.com/twharmon/gouid"
 	"go.uber.org/zap"
 )
@@ -71,7 +70,6 @@ func main() {
 		Body:          body,
 	})
 
-	fmt.Println("wait")
 	for msg := range out {
 		fmt.Println(string(msg.Body), msg.CorrelationId, msg.ReplyTo)
 		msg.Ack(false)

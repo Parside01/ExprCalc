@@ -8,7 +8,7 @@ import (
 )
 
 type Expression struct {
-	Result      float64       `json:"result"`
+	Result      int           `json:"result"`
 	Expression  string        `json:"expression"`
 	GUID        string        `json:"guid"`
 	ExecuteTime time.Duration `json:"execute-time"`

@@ -5,6 +5,7 @@ import (
 	"ExprCalc/pkg/broker"
 	"ExprCalc/pkg/config"
 	"ExprCalc/pkg/redisdb"
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -22,7 +23,7 @@ type ExpressionController struct {
 }
 
 type Request struct {
-	Expression string `json:"expression"`
+	Expression string `json:"expr"`
 }
 
 type Response struct {
@@ -63,35 +64,36 @@ func (e *ExpressionController) GetHandlers() []ControllerHandler {
 }
 
 func (e *ExpressionController) calcHandler(c echo.Context) error {
-	var req *Request
+	var req Request
 	err := c.Bind(&req)
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to bind request", zap.Error(err))
 		return c.JSON(http.StatusBadRequest, &Response{Err: err, Ok: false})
 	}
+	fmt.Println(req)
 
-	ok, err := e.cache.IsExist(c.Request().Context(), req.Expression)
+	_, err = e.cache.IsExist(c.Request().Context(), req.Expression)
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to check cache", zap.Error(err))
 		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
 	}
 
-	if ok == 1 {
-		res, err := e.cache.GetCache(c.Request().Context(), req.Expression)
-		if err != nil {
-			e.logger.Error("ExpressionController.calcHandler: failed to get cache", zap.Error(err))
-			return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
-		}
+	// if ok == 1 {
+	// 	res, err := e.cache.GetCache(c.Request().Context(), req.Expression)
+	// 	if err != nil {
+	// 		e.logger.Error("ExpressionController.calcHandler: failed to get cache", zap.Error(err))
+	// 		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+	// 	}
 
-		var expr *models.Expression
-		err = expr.UnmarshalBinary([]byte(res.(string)))
-		if err != nil {
-			e.logger.Error("ExpressionController.calcHandler: failed to unmarshal expression", zap.Error(err))
-			return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
-		}
+	// 	var expr *models.Expression
+	// 	err = expr.UnmarshalBinary([]byte(res.(string)))
+	// 	if err != nil {
+	// 		e.logger.Error("ExpressionController.calcHandler: failed to unmarshal expression", zap.Error(err))
+	// 		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+	// 	}
 
-		return c.JSON(http.StatusOK, &Response{Expr: expr, Err: nil, Ok: true})
-	}
+	// 	return c.JSON(http.StatusOK, &Response{Expr: expr, Err: nil, Ok: true})
+	// }
 
 	body, err := models.NewExpression(req.Expression).MarshalBinary()
 	if err != nil {
@@ -117,11 +119,15 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 			if msg.CorrelationId == corrId.String() {
 				e.cache.WriteCache(c.Request().Context(), req.Expression, msg.Body)
 				var expr *models.Expression
+
+				fmt.Println(string(msg.Body))
+
 				err = expr.UnmarshalBinary(msg.Body)
 				if err != nil {
 					e.logger.Error("ExpressionController.calcHandler: failed to unmarshal expression", zap.Error(err))
 					return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
 				}
+				fmt.Println(expr)
 				msg.Ack(false)
 				return c.JSON(http.StatusOK, &Response{Expr: expr, Err: nil, Ok: true})
 			}
@@ -132,18 +138,33 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 }
 
 func (e *ExpressionController) setupRabbit() error {
+	// q, err := e.rabbit.Ch.QueueDeclare(e.config.ResultQueue, false, false, false, false, nil)
+	// if err != nil {
+	// 	return err
+	// }
+	// err = e.rabbit.Ch.QueueBind(q.Name, e.config.RouteKey, e.config.Exchange, false, nil)
+	// if err != nil {
+	// 	return err
+	// }
+
+	// out, err := e.rabbit.Ch.Consume(q.Name, "", false, false, false, false, nil)
+	// if err != nil {
+	// 	return err
+	// }
+
 	q, err := e.rabbit.Ch.QueueDeclare(e.config.ResultQueue, false, false, false, false, nil)
 	if err != nil {
-		return err
+		e.logger.Fatal("main.failed to declare queue", zap.Error(err))
 	}
+
 	err = e.rabbit.Ch.QueueBind(q.Name, e.config.RouteKey, e.config.Exchange, false, nil)
 	if err != nil {
-		return err
+		e.logger.Fatal("main.failed to bind queue", zap.Error(err))
 	}
 
 	out, err := e.rabbit.Ch.Consume(q.Name, "", false, false, false, false, nil)
 	if err != nil {
-		return err
+		e.logger.Fatal("main.failed to consume queue", zap.Error(err))
 	}
 
 	e.listen = out
