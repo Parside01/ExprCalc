@@ -1,0 +1,30 @@
+server:
+  port: 8050
+  host: "0.0.0.0"
+logger:
+  level: "error"
+  path: "./logs/log.log"
+  max-size: 100
+  max-age: 30
+  max-backups: 3
+mongo: 
+  uri: "mongodb://mongodb:27017"
+redis: 
+  uri: "redis://localhost:6379"
+app: 
+  password-min-length: 6
+  access-token-expiration-time-minutes: 10
+  refresh-token-expiration-time-minutes: 10
+  token-secret: "secret"
+  local-storage-path: "pkg/repository/local/Storage"
+  cache-ttl: 10
+
+rabbit:
+  uri: "amqp://guest:guest@localhost:5672/"
+
+expression-service:
+  gouroutines-count: 10
+  expr-queue: "expression"
+  res-queue: "result"
+  exchange: "calc"
+  route-key: "rpc"
