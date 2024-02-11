@@ -61,7 +61,7 @@ func (e *ExpressionService) setupRabbit() error {
 		return err
 	}
 
-	err = e.rabbit.Ch.QueueBind(q.Name, "rpc", e.config.Exchange, false, nil)
+	err = e.rabbit.Ch.QueueBind(q.Name, e.config.RouteKey, e.config.Exchange, false, nil)
 	if err != nil {
 		return err
 	}
