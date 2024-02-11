@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/Knetic/govaluate"
 	"github.com/Maldris/mathparse"
 	amqp "github.com/rabbitmq/amqp091-go"
 	"go.uber.org/zap"
@@ -46,7 +47,7 @@ func (e *ExpressionService) start() error {
 }
 func (e *ExpressionService) setupWorkers() {
 	for i := 0; i < e.config.GourutinesCount; i++ {
-		worker := newWorker(e.rabbit, e.parse, e.listen)
+		worker := newWorker(e.rabbit, e.handle, e.listen)
 		if worker == nil {
 			i--
 			continue
@@ -87,8 +88,26 @@ func (e *ExpressionService) parse(expr *models.Expression) {
 	parser.Resolve()
 	if !parser.FoundResult() {
 		expr.Err = ErrInvalidExpression
+		return
 	}
 	expr.ExecuteTime = time.Since(start)
 	res := parser.GetValueResult()
 	expr.Result = res
+}
+
+func (e *ExpressionService) handle(expr *models.Expression) {
+	start := time.Now()
+	re, err := govaluate.NewEvaluableExpression(expr.Expression)
+	if err != nil {
+		expr.Err = err
+		return
+	}
+	result, err := re.Evaluate(nil)
+	if err != nil {
+		expr.Err = err
+		return
+	}
+
+	expr.ExecuteTime = time.Since(start)
+	expr.Result = result.(float64)
 }

@@ -63,7 +63,7 @@ func (e *ExpressionController) GetHandlers() []ControllerHandler {
 }
 
 func (e *ExpressionController) calcHandler(c echo.Context) error {
-	var req *Request
+	var req Request
 	err := c.Bind(&req)
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to bind request", zap.Error(err))

@@ -1,3 +1,5 @@
+github.com/Knetic/govaluate v3.0.0+incompatible h1:7o6+MAPhYTCF0+fdvoz1xDedhRb4f6s9Tn1Tt7/WTEg=
+github.com/Knetic/govaluate v3.0.0+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
 github.com/Maldris/mathparse v0.0.0-20170508133428-f0d009a7a773 h1:wlDWiY/VYdEGdBQmLBqNHyqSC+Kbdk3tHMX0BWKRjDg=
 github.com/Maldris/mathparse v0.0.0-20170508133428-f0d009a7a773/go.mod h1:3OrYs+fU1ZL6zdhMSS+nSOlv4BV/MYPbjtmT9v3xCWg=
 github.com/bsm/ginkgo/v2 v2.12.0 h1:Ny8MWAHyOepLGlLKYmXG4IEkioBysk6GpaRTLC8zwWs=
