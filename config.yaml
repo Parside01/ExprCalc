@@ -8,7 +8,7 @@ logger:
   max-age: 30
   max-backups: 3
 mongo: 
-  uri: "mongodb://mongodb:27017"
+  uri: "mongodb://localhost:27017"
 redis: 
   uri: "redis://localhost:6379"
 app: 

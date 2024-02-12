@@ -3,7 +3,8 @@ package server
 import (
 	"ExprCalc/internal/server/controllers"
 	"ExprCalc/pkg/config"
-	"ExprCalc/pkg/redisdb"
+	"ExprCalc/pkg/repository/mongo"
+	"ExprCalc/pkg/repository/redisdb"
 	"fmt"
 
 	"github.com/labstack/echo/v4"
@@ -16,6 +17,7 @@ type Server struct {
 	Router      *echo.Echo
 	Controllers []controllers.Controller
 	Redis       *redisdb.RedisDB
+	Mongo       *mongo.MongoDB
 }
 
 func NewServer(config *config.ServerConfig, logger *zap.Logger) *Server {
@@ -56,4 +58,17 @@ func (s *Server) RegisterRouters(routes []controllers.Controller) {
 		}
 	}
 	s.Controllers = routes
+}
+
+/*
+*	Пока не нужна.
+* 	Есть какая-то проблема что при запуске выдает панику.
+ */
+func (s *Server) ConfigurateMongo(config *config.MongoDBConfig) {
+	mongo := mongo.New(config, s.Logger)
+	err := mongo.Open()
+	if err != nil {
+		s.Logger.Fatal("server.ConfigurateMongo: error open mongo", zap.Error(err))
+	}
+	s.Mongo = mongo
 }

@@ -4,8 +4,9 @@ import (
 	"ExprCalc/internal/models"
 	"ExprCalc/pkg/broker"
 	"ExprCalc/pkg/config"
-	"ExprCalc/pkg/redisdb"
+	"ExprCalc/pkg/repository/redisdb"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -133,7 +134,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 					e.logger.Error("ExpressionController.calcHandler: failed to unmarshal expression", zap.Error(err))
 					return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
 				}
-
+				fmt.Println(expr, "Пришло в calcHandler")
 				msg.Ack(false)
 
 				return c.JSON(http.StatusOK, &Response{Expr: expr, Err: nil, Ok: true})

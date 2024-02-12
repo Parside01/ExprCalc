@@ -190,3 +190,6 @@
 {"level":"error","ts":1707725881.3835967,"msg":"ExpressionController.calcHandler: failed to unmarshal expression","error":"json: cannot unmarshal object into Go struct field Expression.err of type error"}
 {"level":"info","ts":1707733551.9383204,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1707733552.1254075,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"error","ts":1707741835.551413,"msg":"redis.Open: failed to ping redis","error":"dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1707741835.5756462,"msg":"server.ConfigurateRedis: failed to open redis","error":"dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1707741835.5762784,"msg":"main: failed to open redis","error":"dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
