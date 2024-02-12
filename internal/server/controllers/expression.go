@@ -64,6 +64,12 @@ func (e *ExpressionController) GetHandlers() []ControllerHandler {
 	}
 }
 
+/*
+*	Принимаем сообщение. Нужно дописать его валидацию, чтобы отдавать нужные ошибки.
+*	Если оно есть в кэше то отдаем то что в кэше.
+* 	Отпраяляем в обработчики. Получаем результат через засетапленный канал.
+* 	Фиксируем результат.
+ */
 func (e *ExpressionController) calcHandler(c echo.Context) error {
 	var req Request
 	err := c.Bind(&req)
@@ -137,12 +143,16 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 	}
 }
 
+/*
+*	Сетапим подключение к кролику для контроллер, но думаю что стоит как то передлать этот момент для всего в общем виде,
+*	Ибо почти такой же код и в service, но без регистрации exchange.
+ */
 func (e *ExpressionController) setupRabbit() error {
 
-	// err := e.rabbit.Ch.ExchangeDeclare(e.config.Exchange, "direct", true, false, false, false, nil)
-	// if err != nil {
-	// 	e.logger.Fatal("main.failed to declare exchange", zap.Error(err))
-	// }
+	err := e.rabbit.Ch.ExchangeDeclare(e.config.Exchange, "direct", true, false, false, false, nil)
+	if err != nil {
+		e.logger.Fatal("main.failed to declare exchange", zap.Error(err))
+	}
 
 	q, err := e.rabbit.Ch.QueueDeclare(e.config.ResultQueue, false, false, false, false, nil)
 	if err != nil {
@@ -158,7 +168,13 @@ func (e *ExpressionController) setupRabbit() error {
 	if err != nil {
 		e.logger.Fatal("main.failed to consume queue", zap.Error(err))
 	}
+
 	e.listen = out
+
+	/*
+	*	Вы думаете я знаю почему это так должно быть?
+	* 	Нет я не знаю, но так оно заработало.
+	 */
 	go func() {
 		for msg := range out {
 			msg.Ack(false)
