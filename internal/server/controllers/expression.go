@@ -72,7 +72,7 @@ func (e *ExpressionController) GetHandlers() []ControllerHandler {
  */
 func (e *ExpressionController) calcHandler(c echo.Context) error {
 	var req Request
-	err := c.Bind(&req)
+	err := c.Bind(&req) //bekmbekb
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to bind request", zap.Error(err))
 		return c.JSON(http.StatusBadRequest, &Response{Err: err, Ok: false})
@@ -106,6 +106,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 		e.logger.Error("ExpressionController.calcHandler: failed to marshal expression", zap.Error(err))
 		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
 	}
+
 	corrId := gouid.Bytes(32)
 
 	err = e.rabbit.Ch.PublishWithContext(c.Request().Context(), e.config.Exchange, e.config.RouteKey, false, false, amqp.Publishing{
@@ -134,6 +135,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 				}
 
 				msg.Ack(false)
+
 				return c.JSON(http.StatusOK, &Response{Expr: expr, Err: nil, Ok: true})
 			}
 		case <-c.Request().Context().Done():
