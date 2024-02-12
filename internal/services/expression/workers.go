@@ -23,7 +23,7 @@ type worker struct {
 
 func newWorker(rabbit *broker.RabbitMQ, handler func(*models.Expression), input <-chan amqp.Delivery) *worker {
 	ctx, cancel := context.WithCancel(context.Background())
-	id := gouid.Bytes(32)
+	id := gouid.Bytes(16)
 	worker := &worker{
 		rabbit:  rabbit,
 		id:      id.String(),
@@ -49,11 +49,10 @@ func (w *worker) startLoop() {
 			expr := new(models.Expression)
 			err := expr.UnmarshalBinary(input.Body)
 			expr.Err = err
-
+			fmt.Println(string(input.Body), fmt.Sprintf("Пришло в worker %s", w.id))
 			w.handler(expr)
 
 			body, err := expr.MarshalBinary()
-			fmt.Println(string(body), "должно выйти")
 
 			if err != nil {
 				expr.Err = err
