@@ -93,7 +93,6 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 
 		var expr *models.Expression
 		err = json.Unmarshal([]byte(res.(string)), &expr)
-		err = expr.UnmarshalBinary([]byte(res.(string)))
 		if err != nil {
 			e.logger.Error("ExpressionController.calcHandler: failed to unmarshal expression", zap.Error(err))
 			return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
@@ -146,6 +145,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 /*
 *	Сетапим подключение к кролику для контроллер, но думаю что стоит как то передлать этот момент для всего в общем виде,
 *	Ибо почти такой же код и в service, но без регистрации exchange.
+* 	В очередь котрую тут добаляем будут приходить решенные выражения.
  */
 func (e *ExpressionController) setupRabbit() error {
 
