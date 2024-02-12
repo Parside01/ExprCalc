@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/Knetic/govaluate"
-	"github.com/Maldris/mathparse"
 	amqp "github.com/rabbitmq/amqp091-go"
 	"go.uber.org/zap"
 )
@@ -80,19 +79,6 @@ func (e *ExpressionService) Stop() {
 	for _, worker := range e.workers {
 		worker.cancel()
 	}
-}
-
-func (e *ExpressionService) parse(expr *models.Expression) {
-	start := time.Now()
-	parser := mathparse.NewParser(expr.Expression)
-	parser.Resolve()
-	if !parser.FoundResult() {
-		expr.Err = ErrInvalidExpression
-		return
-	}
-	expr.ExecuteTime = time.Since(start)
-	res := parser.GetValueResult()
-	expr.Result = int(res)
 }
 
 func (e *ExpressionService) handle(expr *models.Expression) {

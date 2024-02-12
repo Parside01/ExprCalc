@@ -104,3 +104,87 @@
 {"level":"info","ts":1707668075.3133829,"msg":"Starting server","addr":"0.0.0.0:8050"}
 {"level":"info","ts":1707668822.3576524,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1707668822.4148777,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"error","ts":1707718876.4423454,"msg":"redis.Open: failed to ping redis","error":"dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1707718876.529109,"msg":"server.ConfigurateRedis: failed to open redis","error":"dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1707718876.52973,"msg":"main: failed to open redis","error":"dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1707718911.9553738,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1707718911.9860427,"msg":"failed to connect to rabbit","error":"dial tcp 127.0.0.1:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1707718926.478689,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1707718926.5195074,"msg":"failed to connect to rabbit","error":"dial tcp 127.0.0.1:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1707718933.8666182,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1707718933.9032826,"msg":"failed to connect to rabbit","error":"dial tcp 127.0.0.1:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1707718996.7520623,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1707718996.797703,"msg":"failed to connect to rabbit","error":"dial tcp 127.0.0.1:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1707719004.0386477,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719004.1125312,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707719048.5008483,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719048.539709,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707719105.6795864,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719105.739466,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707719188.7507424,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719188.8053825,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707719315.78854,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719315.9118054,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707719322.6219473,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719322.6710613,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707719443.0552251,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719443.0967991,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707719911.7216446,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719946.1076062,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719978.7653284,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707719978.8109732,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707720010.1020067,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720010.1417336,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707720034.7274885,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720107.975976,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"fatal","ts":1707720108.007038,"msg":"main.failed to declare exchange","error":"Exception (406) Reason: \"PRECONDITION_FAILED - inequivalent arg 'type' for exchange 'calc' in vhost '/': received 'fanout' but current is 'direct'\""}
+{"level":"info","ts":1707720136.9189956,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720190.9868972,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720197.3825848,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720197.428923,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707720567.531116,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720716.5318213,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720716.5751035,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707720769.1943157,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707720769.242529,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721110.9852588,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721111.0281003,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721338.7540472,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721338.7932527,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721437.6622846,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721437.7596073,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721444.170524,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721444.2066503,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721477.0242288,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721477.0662017,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721507.1932178,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721507.2327745,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721578.6468406,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721578.6869123,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707721675.7375607,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707721675.7767696,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707722480.8252034,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707722480.866701,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707722523.2675192,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707722523.3060067,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707722746.7022786,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707722746.7401352,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707723123.6294312,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707723123.6668293,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707724588.0689292,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707724588.111669,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707725090.5874286,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"fatal","ts":1707725090.618358,"msg":"ExpressionService.NewExpressionService: failed to start expression service","error":"Exception (404) Reason: \"NOT_FOUND - no exchange 'test' in vhost '/'\""}
+{"level":"info","ts":1707725135.5193224,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"fatal","ts":1707725135.549202,"msg":"ExpressionService.NewExpressionService: failed to start expression service","error":"Exception (404) Reason: \"NOT_FOUND - no exchange 'test' in vhost '/'\""}
+{"level":"info","ts":1707725228.75965,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"fatal","ts":1707725228.7929518,"msg":"ExpressionService.NewExpressionService: failed to start expression service","error":"Exception (404) Reason: \"NOT_FOUND - no exchange 'test' in vhost '/'\""}
+{"level":"info","ts":1707725248.3287778,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707725248.3722005,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707725345.3877115,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707725345.4243305,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707725457.782389,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707725457.8231187,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707725844.0208943,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707725844.0783405,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"error","ts":1707725881.3835967,"msg":"ExpressionController.calcHandler: failed to unmarshal expression","error":"json: cannot unmarshal object into Go struct field Expression.err of type error"}

@@ -51,19 +51,21 @@ func (w *worker) startLoop() {
 			expr.Err = err
 
 			w.handler(expr)
-			fmt.Println(expr)
 
 			body, err := expr.MarshalBinary()
 			fmt.Println(string(body), "должно выйти")
 
 			if err != nil {
-				panic(err)
+				expr.Err = err
 			}
-			w.rabbit.Ch.PublishWithContext(w.ctx, "", input.ReplyTo, false, false, amqp.Publishing{
+			err = w.rabbit.Ch.PublishWithContext(w.ctx, "", input.ReplyTo, false, false, amqp.Publishing{
 				ContentType:   "application/json",
-				Body:          []byte(fmt.Sprintf("%s%s", string(body), "wwl,bwb")),
+				Body:          body,
 				CorrelationId: input.CorrelationId,
 			})
+			if err != nil {
+
+			}
 			w.lastTouch = time.Now()
 			input.Ack(false)
 		case <-w.ctx.Done():
