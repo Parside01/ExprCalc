@@ -193,3 +193,9 @@
 {"level":"error","ts":1707741835.551413,"msg":"redis.Open: failed to ping redis","error":"dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
 {"level":"error","ts":1707741835.5756462,"msg":"server.ConfigurateRedis: failed to open redis","error":"dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
 {"level":"error","ts":1707741835.5762784,"msg":"main: failed to open redis","error":"dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1707825685.854502,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707825685.9923456,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1707825690.3067548,"msg":"{\"result\":0,\"expression\":\"2 ** 2 + 38\",\"guid\":\"ed77107349fb8bbd356ae01880e5ab8d\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"74dd78103afd298c70af70fd6f3dea1a"}
+{"level":"info","ts":1707825924.3371994,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1707826198.8405256,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1707826198.8686886,"msg":"failed to connect to rabbit","error":"dial tcp [::1]:5672: connectex: No connection could be made because the target machine actively refused it."}

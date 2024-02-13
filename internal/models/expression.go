@@ -13,6 +13,7 @@ type Expression struct {
 	GUID        string        `json:"guid"`
 	ExecuteTime time.Duration `json:"execute-time"`
 	Err         error         `json:"err"`
+	WorkerID    string        `json:"worker-id"`
 }
 
 func NewExpression(exp string) *Expression {

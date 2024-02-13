@@ -65,10 +65,11 @@ func (s *Server) RegisterRouters(routes []controllers.Controller) {
 * 	Есть какая-то проблема что при запуске выдает панику.
  */
 func (s *Server) ConfigurateMongo(config *config.MongoDBConfig) {
-	mongo := mongo.New(config, s.Logger)
-	err := mongo.Open()
+	m := mongo.New(config, s.Logger)
+
+	err := m.Open()
 	if err != nil {
 		s.Logger.Fatal("server.ConfigurateMongo: error open mongo", zap.Error(err))
 	}
-	s.Mongo = mongo
+	s.Mongo = m
 }

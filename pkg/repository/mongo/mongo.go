@@ -21,6 +21,9 @@ func New(config *config.MongoDBConfig, logger *zap.Logger) *MongoDB {
 		config: config,
 		logger: logger,
 	}
+	if m == nil {
+		m.logger.Fatal("mongo.New: failed to create mongo")
+	}
 	return m
 }
 
@@ -40,6 +43,7 @@ func (m *MongoDB) Open() error {
 	m.logger.Info("mongo.open: connected to mongo", zap.String("URI", m.config.URI))
 	m.Client = client
 	m.db = client.Database("mes")
+
 	return nil
 }
 

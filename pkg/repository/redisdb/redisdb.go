@@ -50,7 +50,6 @@ func (r *RedisDB) Close() error {
 func (r *RedisDB) WriteCache(ctx context.Context, key string, value interface{}) error {
 	r.mutex.RLock()
 	defer r.mutex.RUnlock()
-
 	err := r.Client.Set(ctx, key, value, time.Duration(r.appConfig.CacheTTL)*time.Minute)
 	return err.Err()
 }

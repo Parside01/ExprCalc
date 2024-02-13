@@ -16,11 +16,11 @@ import (
 )
 
 type ExpressionController struct {
-	logger *zap.Logger
-	config *config.ExpressionServiceConfig
-	rabbit *broker.RabbitMQ
-	cache  *redisdb.RedisDB
-	listen <-chan amqp.Delivery
+	logger     *zap.Logger
+	config     *config.ExpressionServiceConfig
+	rabbit     *broker.RabbitMQ
+	cache      *redisdb.RedisDB
+	resultExpr <-chan amqp.Delivery
 }
 
 type Request struct {
@@ -67,13 +67,14 @@ func (e *ExpressionController) GetHandlers() []ControllerHandler {
 
 /*
 *	Принимаем сообщение. Нужно дописать его валидацию, чтобы отдавать нужные ошибки.
+*	С целью скорости отдачи ошибок при неверно введенных данных будем валидировать все на фронте.
 *	Если оно есть в кэше то отдаем то что в кэше.
 * 	Отпраяляем в обработчики. Получаем результат через засетапленный канал.
 * 	Фиксируем результат.
  */
 func (e *ExpressionController) calcHandler(c echo.Context) error {
 	var req Request
-	err := c.Bind(&req) //bekmbekb
+	err := c.Bind(&req)
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to bind request", zap.Error(err))
 		return c.JSON(http.StatusBadRequest, &Response{Err: err, Ok: false})
@@ -123,7 +124,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 
 	for {
 		select {
-		case msg := <-e.listen:
+		case msg := <-e.resultExpr:
 			if msg.CorrelationId == corrId.String() {
 				e.cache.WriteCache(c.Request().Context(), req.Expression, msg.Body)
 
@@ -172,7 +173,7 @@ func (e *ExpressionController) setupRabbit() error {
 		e.logger.Fatal("main.failed to consume queue", zap.Error(err))
 	}
 
-	e.listen = out
+	e.resultExpr = out
 
 	/*
 	*	Вы думаете я знаю почему это так должно быть?

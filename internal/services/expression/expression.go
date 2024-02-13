@@ -17,11 +17,11 @@ var (
 )
 
 type ExpressionService struct {
-	logger  *zap.Logger
-	config  *config.ExpressionServiceConfig
-	rabbit  *broker.RabbitMQ
-	workers map[string]*worker
-	listen  <-chan amqp.Delivery
+	logger     *zap.Logger
+	config     *config.ExpressionServiceConfig
+	rabbit     *broker.RabbitMQ
+	workers    map[string]*worker
+	listenExpr <-chan amqp.Delivery
 }
 
 func NewExpressionService(logger *zap.Logger, cfg *config.ExpressionServiceConfig, rabbit *broker.RabbitMQ) (*ExpressionService, error) {
@@ -46,7 +46,7 @@ func (e *ExpressionService) start() error {
 }
 func (e *ExpressionService) setupWorkers() {
 	for i := 0; i < e.config.GourutinesCount; i++ {
-		worker := newWorker(e.rabbit, e.handle, e.listen)
+		worker := newWorker(e.logger, e.rabbit, e.handle, e.listenExpr)
 		if worker == nil {
 			i--
 			continue
@@ -71,7 +71,7 @@ func (e *ExpressionService) setupRabbit() error {
 		return err
 	}
 
-	e.listen = ch
+	e.listenExpr = ch
 	return nil
 }
 
