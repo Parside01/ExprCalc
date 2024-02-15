@@ -199,3 +199,22 @@
 {"level":"info","ts":1707825924.3371994,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1707826198.8405256,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"error","ts":1707826198.8686886,"msg":"failed to connect to rabbit","error":"dial tcp [::1]:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1707999980.3346708,"msg":"redis.Open: failed to ping redis","error":"dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1707999980.388224,"msg":"server.ConfigurateRedis: failed to open redis","error":"dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"error","ts":1707999980.388224,"msg":"main: failed to open redis","error":"dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1708000006.6481826,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708000006.7214131,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708000791.1006825,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708000791.2867427,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708001068.0436788,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708001068.161042,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708001490.8461254,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708001490.8808603,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708001845.2106295,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708001845.243743,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708002017.2818959,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708002017.4256709,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708002215.2551973,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708002215.3774948,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708002369.7730117,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708002369.8089588,"msg":"Starting server","addr":"0.0.0.0:8050"}

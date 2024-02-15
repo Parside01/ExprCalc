@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"ExprCalc/internal/models"
+	"ExprCalc/internal/server/middleware"
 	"ExprCalc/pkg/broker"
 	"ExprCalc/pkg/config"
 	"ExprCalc/pkg/repository/redisdb"
@@ -52,7 +53,9 @@ func (e *ExpressionController) GetGroup() string {
 	return "/expr"
 }
 func (e *ExpressionController) GetMiddleware() []echo.MiddlewareFunc {
-	return nil
+	return []echo.MiddlewareFunc{
+		middleware.CorseDisable(),
+	}
 }
 
 func (e *ExpressionController) GetHandlers() []ControllerHandler {
@@ -79,7 +82,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 		e.logger.Error("ExpressionController.calcHandler: failed to bind request", zap.Error(err))
 		return c.JSON(http.StatusBadRequest, &Response{Err: err, Ok: false})
 	}
-
+	fmt.Println(req)
 	ok, err := e.cache.IsExist(c.Request().Context(), req.Expression)
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to check cache", zap.Error(err))
