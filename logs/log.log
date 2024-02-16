@@ -218,3 +218,92 @@
 {"level":"info","ts":1708002215.3774948,"msg":"Starting server","addr":"0.0.0.0:8050"}
 {"level":"info","ts":1708002369.7730117,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1708002369.8089588,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708009816.160005,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708009816.2075698,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708010186.67528,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708010186.9350948,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708010894.7141762,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708010894.748966,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708010900.0403082,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708010900.1008775,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708011043.056779,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708011043.0896683,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708011316.7234652,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708011316.755399,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708011339.3407688,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708011339.375837,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708011622.6279488,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708011622.8070605,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708011783.3231697,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708011783.3574703,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708012124.1361675,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012124.2970386,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708012247.633532,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012247.7924912,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708012439.7701755,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012439.8882158,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708012515.797537,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012515.939552,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708012544.5751665,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012544.61088,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708012546.4436555,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"373e7d0eefbea9401a8e26d04cbc5019"}
+{"level":"info","ts":1708012601.5859847,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012601.6171427,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"10ebf983bfe31b53b56ab0092ed67434"}
+{"level":"info","ts":1708012603.5925906,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012603.621871,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"140bdc1f20db3701d02348a0a89fe357"}
+{"level":"info","ts":1708012604.6473293,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012604.6774745,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"d7c557b001405ac7ebd8770c2578ddba"}
+{"level":"info","ts":1708012605.7754104,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012605.805512,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"107598955d782e61e692f3f5ec8f530d"}
+{"level":"info","ts":1708012606.486904,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012606.5146697,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"ea0cbe92ef6a70eec4030d22ba4f6429"}
+{"level":"info","ts":1708012607.4106557,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012607.4428313,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"eb74256b5f3b88d1589bc2d53b7c1865"}
+{"level":"info","ts":1708012608.044355,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012608.0771172,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"b5d82555594342df4898a091d902519c"}
+{"level":"info","ts":1708012608.6221957,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012608.6540427,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"0b7665bc6d15c39eb9ae90e5eed4dd91"}
+{"level":"info","ts":1708012609.3300378,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012609.3614626,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"1e89fb85794c6f395aaf67c555b2ac21"}
+{"level":"info","ts":1708012609.960899,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012609.9895577,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"a024dcbea90fe15ec72bebb214bb978d"}
+{"level":"info","ts":1708012648.611538,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012648.6424463,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"d5b3eca0395fe17d94b5e321c5293a6b"}
+{"level":"info","ts":1708012729.928459,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012730.0164306,"msg":"{\"result\":0,\"expression\":\"eevevev\",\"guid\":\"1a6314cf1f88a0a238da43a2397c7551\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"a30c56079747d30413aca0dd306c6ded"}
+{"level":"info","ts":1708012762.4754722,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1708012762.5095298,"msg":"failed to connect to rabbit","error":"dial tcp 127.0.0.1:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1708012765.9114084,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1708012765.9440813,"msg":"failed to connect to rabbit","error":"dial tcp 127.0.0.1:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1708012779.0471787,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708012779.0865092,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708012785.8424065,"msg":"{\"result\":0,\"expression\":\"2 + 2\",\"guid\":\"6fa62b28451079a2ae39b03e7f3b7067\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"627bb7a27db0366d7c013ec889102718"}
+{"level":"info","ts":1708012832.678492,"msg":"{\"result\":0,\"expression\":\"143 * 142 + 2 ** 18\",\"guid\":\"c695f830d0ba06d943a948f392e2efa5\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"6c8eeb99b5f7b70498d198c058a11a85"}
+{"level":"info","ts":1708013115.2790062,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013115.3893158,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708013250.4294994,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013250.5831628,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708013528.3050792,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013528.5277143,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708013568.8518114,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013568.9935243,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708013759.8689709,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013759.9989576,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708013859.5626874,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013859.7489135,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708013863.4502447,"msg":"{\"result\":0,\"expression\":\"6 ** 6 + 4 ** 2\",\"guid\":\"6b94bf979dc65dcc13c049beb4b3eebe\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"d74444a1f6fa6a82c2ab1f78ad04ba57"}
+{"level":"info","ts":1708013939.4551332,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013939.491268,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708013968.8596158,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708013968.9982498,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708014058.8572505,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708014058.98425,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708014102.201369,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708014102.3892207,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708014138.9199247,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708014139.0269434,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708014165.9368348,"msg":"{\"result\":0,\"expression\":\"6 ** 6 + 4 ** 3\",\"guid\":\"8959c74f5cc08a998fc1cdda1dc4ea4c\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"40313a889909cfa235e05adb8279d2cc"}
+{"level":"info","ts":1708014286.0631905,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708014286.250783,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708014347.0873647,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708014347.2980354,"msg":"Starting server","addr":"0.0.0.0:8050"}

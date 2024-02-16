@@ -10,6 +10,7 @@ import (
 	"time"
 
 	amqp "github.com/rabbitmq/amqp091-go"
+	"github.com/sourcegraph/conc"
 	"github.com/twharmon/gouid"
 	"go.uber.org/zap"
 )
@@ -17,6 +18,7 @@ import (
 type worker struct {
 	logger    *zap.Logger
 	id        string
+	wg        *conc.WaitGroup
 	lastTouch time.Time
 	handler   func(*models.Expression)
 	cache     *redisdb.RedisDB
@@ -37,10 +39,12 @@ func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models
 		ctx:     ctx,
 		cancel:  cancel,
 		handler: handler,
+		wg:      conc.NewWaitGroup(),
 	}
 
 	worker.inputExpr = input
-	go worker.startLoop()
+	go worker.startExprLoop()
+	go worker.startCacheLoop()
 	return worker
 }
 
@@ -49,7 +53,7 @@ func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models
 * 	Просто запускаем цикл обработки сообщений в горутинах.
 *	После добработки отправляем тому кто прислал через @RoutingKey и @CorrelationId.
  */
-func (w *worker) startLoop() {
+func (w *worker) startExprLoop() {
 	for {
 		select {
 		case input := <-w.inputExpr:
@@ -58,6 +62,17 @@ func (w *worker) startLoop() {
 			return
 		}
 
+	}
+}
+
+func (w *worker) startCacheLoop(ticker *time.Ticker) {
+	for {
+		select {
+		case <-ticker.C:
+
+		case <-w.ctx.Done():
+			return
+		}
 	}
 }
 

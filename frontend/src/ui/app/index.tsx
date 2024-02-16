@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./index.scss"
 import { api } from "src/utils/axios";
+import { BaseModal } from "../modals/BaseModal";
 
 const sendExpression = (expr: string) => {
     api.post("/expr/calc", { expr }).catch(e => console.log(e))
@@ -10,6 +11,7 @@ const sendExpression = (expr: string) => {
 
 export const App = () => {
     const [expression, setExpression] = useState("");
+    const [viewSpeedModal, setViewSpeedModal] = useState(false);
 
     return (
         <div className="container">
@@ -26,7 +28,11 @@ export const App = () => {
                 </div>
                 
                 <div className="options">
-                    <button><span className="material-symbols-rounded">speed</span></button>
+                    <button 
+                        onClick={() => setViewSpeedModal(!viewSpeedModal)}
+                    >
+                        <span className="material-symbols-rounded">speed</span>
+                    </button>
                     <button><span className="material-symbols-rounded">settings</span></button>
                     <button><span className="material-symbols-rounded">settings_backup_restore</span></button>
                     <button><span className="material-symbols-rounded">show_chart</span></button>
@@ -39,6 +45,7 @@ export const App = () => {
                     >Submit</button>
                 </div>
             </form>
+            { viewSpeedModal && <BaseModal changer={setViewSpeedModal} /> }
         </div>
     )
 }
