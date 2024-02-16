@@ -23,7 +23,7 @@ rabbit:
   uri: "amqp://guest:guest@localhost:5672/"
 
 expression-service:
-  gouroutines-count: 1
+  gorutines-count: 1
   expr-queue: "expression"
   res-queue: "result"
   exchange: "calc"

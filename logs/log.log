@@ -384,3 +384,25 @@
 {"level":"info","ts":1708094926.424188,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1708094926.5775573,"msg":"Starting server","addr":"0.0.0.0:8050"}
 {"level":"info","ts":1708095023.428569,"msg":"{\"result\":0,\"expression\":\"2 ** 2 + 38\",\"guid\":\"05f24f0ebe059e8fb3a26242f2083c59\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"593fa66bb91bf9e808af751b75c6d6da"}
+{"level":"info","ts":1708095331.7777047,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095331.9461458,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095391.5447822,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095391.7075303,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095416.2613318,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095416.4072778,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095439.4555178,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095439.6049244,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095491.1139848,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095491.2813838,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095688.0720766,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095688.2268567,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095928.679279,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095928.8266158,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095985.5644338,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095985.7226858,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095990.2016802,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708095990.3345807,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708096085.6943424,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708096085.8266513,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708096107.076859,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708096107.2242136,"msg":"Starting server","addr":"0.0.0.0:8050"}

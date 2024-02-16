@@ -155,10 +155,28 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 }
 
 func (e *ExpressionController) getWorkersInfo(c echo.Context) error {
-	res, err := e.cache.GetAllKeysByPattern(c.Request().Context(), "worker")
+	keys, err := e.cache.GetAllKeysByPattern(c.Request().Context(), "worker")
 	if err != nil {
 		e.logger.Error("ExpressionController.getWorkersInfo: failed to get workers info", zap.Error(err))
 		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+	}
+
+	res := []*models.WorkerInfo{}
+	for _, i := range keys {
+		var info *models.WorkerInfo
+		obj, err := e.cache.GetCache(c.Request().Context(), i)
+		if err != nil {
+			e.logger.Error("ExpressionController.getWorkersInfo: failed to get workers info", zap.Error(err))
+			return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+		}
+
+		err = json.Unmarshal([]byte(obj.(string)), &info)
+		if err != nil {
+			e.logger.Error("ExpressionController.getWorkersInfo: failed to unmarshal workers info", zap.Error(err))
+			return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+		}
+
+		res = append(res, info)
 	}
 	return c.JSON(http.StatusOK, res)
 }

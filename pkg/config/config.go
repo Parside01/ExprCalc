@@ -24,7 +24,7 @@ type ServerConfig struct {
 }
 
 type ExpressionServiceConfig struct {
-	GourutinesCount  int    `yaml:"gourutines-count" mapstructure:"gourutines-count"`
+	GourutinesCount  int    `yaml:"gorutines-count" mapstructure:"gorutines-count"`
 	WorkerInfoUpdate int    `yaml:"worker-info-update" mapstructure:"worker-info-update"`
 	ExpressionQueue  string `yaml:"expr-queue" mapstructure:"expr-queue"`
 	ResultQueue      string `yaml:"res-queue" mapstructure:"res-queue"`
@@ -93,7 +93,7 @@ func setDefaults(v *viper.Viper) {
 
 	v.SetDefault("expression-service.expr-queue", "input")
 	v.SetDefault("expression-service.res-queue", "output")
-	v.SetDefault("expression-service.gourutines-count", 10)
+	v.SetDefault("expression-service.gorutines-count", 10)
 	v.SetDefault("expression-service.exchange", "exprService")
 	v.SetDefault("expression-service.route-key", "rpc")
 	v.SetDefault("expression-service.worker-info-update", 5)

@@ -51,13 +51,13 @@ func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models
 	go worker.startExprLoop()
 	go worker.startCacheLoop(time.NewTicker(infoUpdate))
 
-	err := worker.cache.WriteCacheWithTTL(worker.ctx, fmt.Sprintf("woker-%s", worker.id), &workerInfo{
+	err := worker.cache.WriteCacheWithTTL(worker.ctx, fmt.Sprintf("woker-%s", worker.id), &models.WorkerInfo{
 		WorkerID:   worker.id,
 		LastTouch:  time.Now().String(),
 		IsEmploy:   worker.isEmploy,
 		CurrentJob: worker.currJob,
 	}, infoUpdate)
-	fmt.Println(infoUpdate)
+
 	if err != nil {
 		worker.logger.Error(fmt.Sprintf("worker.startCacheLoop: failed to write cache in worker %s", worker.id), zap.Error(err))
 	}
@@ -86,7 +86,7 @@ func (w *worker) startCacheLoop(ticker *time.Ticker) {
 	for {
 		select {
 		case <-ticker.C:
-			err := w.cache.WriteCacheWithTTL(w.ctx, fmt.Sprintf("woker-%s", w.id), &workerInfo{
+			err := w.cache.WriteCacheWithTTL(w.ctx, fmt.Sprintf("worker-%s", w.id), &models.WorkerInfo{
 				WorkerID:   w.id,
 				LastTouch:  w.lastTouch.String(),
 				IsEmploy:   w.isEmploy,
