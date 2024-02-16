@@ -4,6 +4,7 @@ import (
 	"ExprCalc/internal/models"
 	"ExprCalc/pkg/broker"
 	"ExprCalc/pkg/config"
+	"ExprCalc/pkg/repository/redisdb"
 	"fmt"
 	"time"
 
@@ -21,14 +22,16 @@ type ExpressionService struct {
 	config     *config.ExpressionServiceConfig
 	rabbit     *broker.RabbitMQ
 	workers    map[string]*worker
+	cache      *redisdb.RedisDB
 	listenExpr <-chan amqp.Delivery
 }
 
-func NewExpressionService(logger *zap.Logger, cfg *config.ExpressionServiceConfig, rabbit *broker.RabbitMQ) (*ExpressionService, error) {
+func NewExpressionService(logger *zap.Logger, cfg *config.ExpressionServiceConfig, rabbit *broker.RabbitMQ, cache *redisdb.RedisDB) (*ExpressionService, error) {
 	service := &ExpressionService{
 		logger:  logger,
 		workers: make(map[string]*worker),
 		config:  cfg,
+		cache:   cache,
 		rabbit:  rabbit,
 	}
 	err := service.start()
@@ -46,7 +49,7 @@ func (e *ExpressionService) start() error {
 }
 func (e *ExpressionService) setupWorkers() {
 	for i := 0; i < e.config.GourutinesCount; i++ {
-		worker := newWorker(e.logger, e.rabbit, e.handle, e.listenExpr)
+		worker := newWorker(e.logger, e.rabbit, e.handle, e.listenExpr, time.Duration(e.config.WorkerInfoUpdate)*time.Second, e.cache)
 		if worker == nil {
 			i--
 			continue

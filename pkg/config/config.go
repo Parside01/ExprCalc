@@ -24,11 +24,12 @@ type ServerConfig struct {
 }
 
 type ExpressionServiceConfig struct {
-	GourutinesCount int    `yaml:"gourutines-count" mapstructure:"gourutines-count"`
-	ExpressionQueue string `yaml:"expr-queue" mapstructure:"expr-queue"`
-	ResultQueue     string `yaml:"res-queue" mapstructure:"res-queue"`
-	Exchange        string `yaml:"exchange" mapstructure:"exchange"`
-	RouteKey        string `yaml:"route-key" mapstructure:"route-key"`
+	GourutinesCount  int    `yaml:"gourutines-count" mapstructure:"gourutines-count"`
+	WorkerInfoUpdate int    `yaml:"worker-info-update" mapstructure:"worker-info-update"`
+	ExpressionQueue  string `yaml:"expr-queue" mapstructure:"expr-queue"`
+	ResultQueue      string `yaml:"res-queue" mapstructure:"res-queue"`
+	Exchange         string `yaml:"exchange" mapstructure:"exchange"`
+	RouteKey         string `yaml:"route-key" mapstructure:"route-key"`
 }
 
 type LoggerConfig struct {
@@ -95,6 +96,7 @@ func setDefaults(v *viper.Viper) {
 	v.SetDefault("expression-service.gourutines-count", 10)
 	v.SetDefault("expression-service.exchange", "exprService")
 	v.SetDefault("expression-service.route-key", "rpc")
+	v.SetDefault("expression-service.worker-info-update", 5)
 
 	v.SetDefault("rabbit.uri", "amqp://guest:guest@localhost:5672/")
 }

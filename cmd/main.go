@@ -27,7 +27,7 @@ func main() {
 		return
 	}
 
-	exprService, err := expression.NewExpressionService(logger, config.Expr, broker.NewRabbit(logger, config.Rabbit))
+	exprService, err := expression.NewExpressionService(logger, config.Expr, broker.NewRabbit(logger, config.Rabbit), server.Redis)
 	if err != nil {
 		logger.Fatal("failed to start exprService", zap.Error(err))
 	}

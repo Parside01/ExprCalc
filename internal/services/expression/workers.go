@@ -16,35 +16,50 @@ import (
 )
 
 type worker struct {
-	logger    *zap.Logger
 	id        string
-	wg        *conc.WaitGroup
+	isEmploy  bool
 	lastTouch time.Time
+	currJob   string
+	logger    *zap.Logger
+	wg        *conc.WaitGroup //так на будущее
 	handler   func(*models.Expression)
 	cache     *redisdb.RedisDB
 	inputExpr <-chan amqp.Delivery
 	rabbit    *broker.RabbitMQ
 	ctx       context.Context    //да да не очень хорошая практика.
 	cancel    context.CancelFunc // и это тоже.
-	writeInfo <-chan amqp.Delivery
 }
 
-func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models.Expression), input <-chan amqp.Delivery) *worker {
+func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models.Expression), input <-chan amqp.Delivery, infoUpdate time.Duration, cache *redisdb.RedisDB) *worker {
 	ctx, cancel := context.WithCancel(context.Background())
 	id := gouid.Bytes(16)
 	worker := &worker{
-		logger:  logger,
-		rabbit:  rabbit,
-		id:      id.String(),
-		ctx:     ctx,
-		cancel:  cancel,
-		handler: handler,
-		wg:      conc.NewWaitGroup(),
+		logger:   logger,
+		rabbit:   rabbit,
+		id:       id.String(),
+		cache:    cache,
+		ctx:      ctx,
+		cancel:   cancel,
+		handler:  handler,
+		wg:       conc.NewWaitGroup(),
+		isEmploy: false,
+		currJob:  "",
 	}
 
 	worker.inputExpr = input
 	go worker.startExprLoop()
-	go worker.startCacheLoop()
+	go worker.startCacheLoop(time.NewTicker(infoUpdate))
+
+	err := worker.cache.WriteCache(worker.ctx, fmt.Sprintf("woker-%s", worker.id), &workerInfo{
+		WorkerID:   worker.id,
+		LastTouch:  time.Now().String(),
+		IsEmploy:   worker.isEmploy,
+		CurrentJob: worker.currJob,
+	})
+	if err != nil {
+		worker.logger.Error(fmt.Sprintf("worker.startCacheLoop: failed to write cache in worker", worker.id), zap.Error(err))
+	}
+
 	return worker
 }
 
@@ -69,7 +84,15 @@ func (w *worker) startCacheLoop(ticker *time.Ticker) {
 	for {
 		select {
 		case <-ticker.C:
-
+			err := w.cache.WriteCache(w.ctx, fmt.Sprintf("woker-%s", w.id), &workerInfo{
+				WorkerID:   w.id,
+				LastTouch:  w.lastTouch.String(),
+				IsEmploy:   w.isEmploy,
+				CurrentJob: w.currJob,
+			})
+			if err != nil {
+				w.logger.Error(fmt.Sprintf("worker.startCacheLoop: failed to write cache in worker", w.id), zap.Error(err))
+			}
 		case <-w.ctx.Done():
 			return
 		}
@@ -79,9 +102,15 @@ func (w *worker) startCacheLoop(ticker *time.Ticker) {
 func (w *worker) proccessExpression(input amqp.Delivery) {
 	w.logger.Info(string(input.Body), zap.String(fmt.Sprintf("Пришло в worker"), w.id))
 
+	w.isEmploy = true
+	defer w.onWaitState()
+
 	expr := new(models.Expression)
 	err := expr.UnmarshalBinary(input.Body)
 	expr.Err = err
+
+	w.currJob = expr.Expression
+
 	expr.WorkerID = w.id
 
 	w.handler(expr)
@@ -90,6 +119,7 @@ func (w *worker) proccessExpression(input amqp.Delivery) {
 	if err != nil {
 		expr.Err = err
 	}
+
 	err = w.rabbit.Ch.PublishWithContext(w.ctx, "", input.ReplyTo, false, false, amqp.Publishing{
 		ContentType:   "application/json",
 		Body:          body,
@@ -97,12 +127,17 @@ func (w *worker) proccessExpression(input amqp.Delivery) {
 	})
 	if err != nil {
 		w.logger.Error("ExpressionController.calcHandler: failed to publish message", zap.Error(err))
+		return
 	}
-	w.lastTouch = time.Now()
 
 	input.Ack(false)
 }
 
+func (w *worker) onWaitState() {
+	w.isEmploy = false
+	w.lastTouch = time.Now()
+	w.currJob = ""
+}
 func (w *worker) processExprInRedis(expr *models.Expression) (*models.Expression, error) {
 	ok, err := w.cache.IsExist(w.ctx, expr.Expression)
 	if err != nil {

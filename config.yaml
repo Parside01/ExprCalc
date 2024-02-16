@@ -28,3 +28,4 @@ expression-service:
   res-queue: "result"
   exchange: "calc"
   route-key: "rpc"
+  worker-info-update: 2
