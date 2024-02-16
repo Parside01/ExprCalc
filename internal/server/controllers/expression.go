@@ -87,7 +87,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 		e.logger.Error("ExpressionController.calcHandler: failed to bind request", zap.Error(err))
 		return c.JSON(http.StatusBadRequest, &Response{Err: err, Ok: false})
 	}
-	fmt.Println(req)
+
 	ok, err := e.cache.IsExist(c.Request().Context(), req.Expression)
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to check cache", zap.Error(err))

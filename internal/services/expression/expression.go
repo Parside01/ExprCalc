@@ -49,7 +49,7 @@ func (e *ExpressionService) start() error {
 }
 func (e *ExpressionService) setupWorkers() {
 	for i := 0; i < e.config.GourutinesCount; i++ {
-		worker := newWorker(e.logger, e.rabbit, e.handle, e.listenExpr, time.Duration(e.config.WorkerInfoUpdate)*time.Second, e.cache)
+		worker := newWorker(e.logger, e.rabbit, e.handle, e.listenExpr, time.Duration(e.config.WorkerInfoUpdate*int(time.Second)), e.cache)
 		if worker == nil {
 			i--
 			continue

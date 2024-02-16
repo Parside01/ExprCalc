@@ -367,3 +367,20 @@
 {"level":"info","ts":1708080237.1562605,"msg":"{\"result\":0,\"expression\":\"6 ** 6 + 4 ** 3\",\"guid\":\"e0dc2ce68de6e0b2d22b871fb088039a\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"9d6182830a168f58e1094d853a4870ae"}
 {"level":"info","ts":1708080678.1032443,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1708080678.3525333,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708093671.551868,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708093671.7224967,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708093728.5555577,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708093728.6976867,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708094099.4840608,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708094099.6280916,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708094319.9232666,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708094320.068324,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708094386.848764,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708094386.9984345,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708094763.2951162,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"error","ts":1708094763.322428,"msg":"failed to connect to rabbit","error":"dial tcp [::1]:5672: connectex: No connection could be made because the target machine actively refused it."}
+{"level":"info","ts":1708094841.4713676,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708094841.6241658,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708094926.424188,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708094926.5775573,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708095023.428569,"msg":"{\"result\":0,\"expression\":\"2 ** 2 + 38\",\"guid\":\"05f24f0ebe059e8fb3a26242f2083c59\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"593fa66bb91bf9e808af751b75c6d6da"}

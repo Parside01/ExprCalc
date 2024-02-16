@@ -2,6 +2,7 @@ package redisdb
 
 import (
 	"context"
+	"fmt"
 	"time"
 )
 
@@ -9,6 +10,13 @@ func (r *RedisDB) WriteCache(ctx context.Context, key string, value interface{})
 	r.mutex.RLock()
 	defer r.mutex.RUnlock()
 	err := r.Client.Set(ctx, key, value, time.Duration(r.appConfig.CacheTTL)*time.Minute)
+	return err.Err()
+}
+
+func (r *RedisDB) WriteCacheWithTTL(ctx context.Context, key string, value interface{}, ttl time.Duration) error {
+	r.mutex.RLock()
+	defer r.mutex.RUnlock()
+	err := r.Client.Set(ctx, key, value, ttl)
 	return err.Err()
 }
 
@@ -27,5 +35,5 @@ func (r *RedisDB) IsExist(ctx context.Context, key string) (int64, error) {
 }
 
 func (r *RedisDB) GetAllKeysByPattern(ctx context.Context, pattern string) ([]string, error) {
-	return r.Client.Keys(ctx, pattern).Result()
+	return r.Client.Keys(ctx, fmt.Sprintf("*%s*", pattern)).Result()
 }

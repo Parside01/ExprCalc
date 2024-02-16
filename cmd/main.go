@@ -7,6 +7,8 @@ import (
 	"ExprCalc/pkg/broker"
 	"ExprCalc/pkg/config"
 	"ExprCalc/pkg/logger"
+	"context"
+	"fmt"
 
 	"go.uber.org/zap"
 )
@@ -33,6 +35,8 @@ func main() {
 	}
 	defer exprService.Stop()
 
+	res, err := server.Redis.GetAllKeysByPattern(context.TODO(), "worker")
+	fmt.Println(res)
 	exprController := controllers.NewExpressionController(logger, config.Expr, broker.NewRabbit(logger, config.Rabbit), server.Redis)
 
 	server.RegisterRouters([]controllers.Controller{exprController})

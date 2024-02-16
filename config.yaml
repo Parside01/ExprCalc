@@ -17,15 +17,15 @@ app:
   refresh-token-expiration-time-minutes: 10
   token-secret: "secret"
   local-storage-path: "pkg/repository/local/Storage"
-  cache-ttl: 0
+  cache-ttl: 
 
 rabbit:
   uri: "amqp://guest:guest@localhost:5672/"
 
 expression-service:
-  gouroutines-count: 10
+  gouroutines-count: 1
   expr-queue: "expression"
   res-queue: "result"
   exchange: "calc"
   route-key: "rpc"
-  worker-info-update: 1
+  worker-info-update: 2
