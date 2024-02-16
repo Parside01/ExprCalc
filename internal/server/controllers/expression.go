@@ -65,6 +65,11 @@ func (e *ExpressionController) GetHandlers() []ControllerHandler {
 			Path:    "/calc",
 			Handler: e.calcHandler,
 		},
+		&Handler{
+			Method:  "GET",
+			Path:    "/getWorkersInfo",
+			Handler: e.getWorkersInfo,
+		},
 	}
 }
 
@@ -147,6 +152,15 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 			return c.Request().Context().Err()
 		}
 	}
+}
+
+func (e *ExpressionController) getWorkersInfo(c echo.Context) error {
+	res, err := e.cache.GetAllKeysByPattern(c.Request().Context(), "worker")
+	if err != nil {
+		e.logger.Error("ExpressionController.getWorkersInfo: failed to get workers info", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+	}
+	return c.JSON(http.StatusOK, res)
 }
 
 /*

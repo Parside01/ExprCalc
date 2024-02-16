@@ -365,3 +365,5 @@
 {"level":"info","ts":1708080174.7372618,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1708080174.775431,"msg":"Starting server","addr":"0.0.0.0:8050"}
 {"level":"info","ts":1708080237.1562605,"msg":"{\"result\":0,\"expression\":\"6 ** 6 + 4 ** 3\",\"guid\":\"e0dc2ce68de6e0b2d22b871fb088039a\",\"execute-time\":0,\"err\":null,\"worker-id\":\"\"}","Пришло в worker":"9d6182830a168f58e1094d853a4870ae"}
+{"level":"info","ts":1708080678.1032443,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708080678.3525333,"msg":"Starting server","addr":"0.0.0.0:8050"}
