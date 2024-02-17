@@ -125,7 +125,11 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 	}
 
 	expr := models.NewExpression(req.Expression)
-	expr.ExpectExucuteTime = CalcExecurteTime(req)
+	expr.ExpectExucuteTime = calcExecurteTime(req)
+	if err = expr.IsValidMathExpression(); err != nil {
+		e.logger.Error("ExpressionController.calcHandler: none valid expression", zap.Error(err))
+		return c.JSON(http.StatusBadRequest, &Response{Err: err, Ok: false})
+	}
 
 	body, err := expr.MarshalBinary()
 	if err != nil {
@@ -296,7 +300,7 @@ func (e *ExpressionController) setupRabbit() error {
 	return nil
 }
 
-func CalcExecurteTime(req Request) int64 {
+func calcExecurteTime(req Request) int64 {
 	arr := []int64{req.MultiplyTime, req.AddTime, req.DivideTime, req.SubtractTime, req.PowTime, req.DivRemainderTime}
 	max := slices.Max(arr)
 
