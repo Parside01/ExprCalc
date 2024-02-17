@@ -5,6 +5,7 @@ import (
 	"ExprCalc/pkg/broker"
 	"ExprCalc/pkg/config"
 	"ExprCalc/pkg/repository/redisdb"
+	"context"
 	"fmt"
 	"time"
 
@@ -96,9 +97,14 @@ func (e *ExpressionService) handle(expr *models.Expression) {
 		expr.Err = err
 		return
 	}
-	time.Sleep(time.Duration(expr.ExpectExucuteTime) * time.Millisecond)
 
-	expr.ExecuteTime = time.Since(start).Milliseconds()
-	expr.IsDone = true
-	expr.Result = int(result.(float64))
+	go func(ctx context.Context, start time.Time, expr *models.Expression, res float64) {
+		select {
+		case <-time.After(time.Duration(expr.ExpectExucuteTime) * time.Millisecond):
+			expr.ExecuteTime = time.Since(start).Milliseconds()
+			expr.Result = res
+			expr.IsDone = true
+			e.cache.WriteCache(ctx, expr.Expression, expr)
+		}
+	}(context.Background(), start, expr, result.(float64))
 }

@@ -433,3 +433,6 @@
 {"level":"info","ts":1708150752.5686843,"msg":"{\"result\":0,\"expression\":\"3 ** 2 + 56\",\"guid\":\"602128117676b44112994a0291ea7f96\",\"execute-time\":0,\"expect-execute-time\":0,\"err\":null,\"is-done\":false,\"worker-id\":\"\"}","Пришло в worker":"94c6cf8f2b86a338a609f0b6dbf9f60d"}
 {"level":"info","ts":1708150756.0607002,"msg":"{\"result\":0,\"expression\":\"3 ** 2 + 54\",\"guid\":\"952e79399f20c2c6db55ec42ce44cf56\",\"execute-time\":0,\"expect-execute-time\":0,\"err\":null,\"is-done\":false,\"worker-id\":\"\"}","Пришло в worker":"e64a208a3be7eb663d3a963e1ea8db1a"}
 {"level":"info","ts":1708150759.9654937,"msg":"{\"result\":0,\"expression\":\"3 ** 2 + 34\",\"guid\":\"62c4a30193c8d60e5f39ce134bca68d6\",\"execute-time\":0,\"expect-execute-time\":0,\"err\":null,\"is-done\":false,\"worker-id\":\"\"}","Пришло в worker":"2a7985de701683cebd42301cc56bc09d"}
+{"level":"info","ts":1708158568.0541193,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708158568.2280827,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"error","ts":1708158590.2359743,"msg":"ExpressionController.calcHandler: none valid expression","error":"unequal number of opposite staples"}

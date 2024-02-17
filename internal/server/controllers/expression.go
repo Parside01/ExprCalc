@@ -126,6 +126,7 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 
 	expr := models.NewExpression(req.Expression)
 	expr.ExpectExucuteTime = calcExecurteTime(req)
+
 	if err = expr.IsValidMathExpression(); err != nil {
 		e.logger.Error("ExpressionController.calcHandler: none valid expression", zap.Error(err))
 		return c.JSON(http.StatusBadRequest, &Response{Err: err, Ok: false})

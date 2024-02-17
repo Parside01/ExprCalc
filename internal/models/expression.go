@@ -10,14 +10,14 @@ import (
 )
 
 type Expression struct {
-	Result            int    `json:"result"`
-	Expression        string `json:"expression"`
-	GUID              string `json:"guid"`
-	ExecuteTime       int64  `json:"execute-time"`
-	ExpectExucuteTime int64  `json:"expect-execute-time"`
-	Err               error  `json:"err"`
-	IsDone            bool   `json:"is-done"`
-	WorkerID          string `json:"worker-id"`
+	Result            float64 `json:"result"`
+	Expression        string  `json:"expression"`
+	GUID              string  `json:"guid"`
+	ExecuteTime       int64   `json:"execute-time"`
+	ExpectExucuteTime int64   `json:"expect-execute-time"`
+	Err               error   `json:"err"`
+	IsDone            bool    `json:"is-done"`
+	WorkerID          string  `json:"worker-id"`
 }
 
 func NewExpression(exp string) *Expression {
