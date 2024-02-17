@@ -26,14 +26,13 @@ func main() {
 		logger.Error("main: failed to open redis", zap.Error(err))
 		return
 	}
+	exprController := controllers.NewExpressionController(logger, config.Expr, broker.NewRabbit(logger, config.Rabbit), server.Redis)
 
 	exprService, err := expression.NewExpressionService(logger, config.Expr, broker.NewRabbit(logger, config.Rabbit), server.Redis)
 	if err != nil {
 		logger.Fatal("failed to start exprService", zap.Error(err))
 	}
 	defer exprService.Stop()
-
-	exprController := controllers.NewExpressionController(logger, config.Expr, broker.NewRabbit(logger, config.Rabbit), server.Redis)
 
 	server.RegisterRouters([]controllers.Controller{exprController})
 

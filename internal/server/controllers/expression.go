@@ -9,7 +9,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"slices"
 	"strconv"
 	"strings"
 
@@ -304,8 +303,9 @@ func (e *ExpressionController) setupRabbit() error {
 }
 
 func calcExecurteTime(req Request) int64 {
-	arr := []int64{req.MultiplyTime, req.AddTime, req.DivideTime, req.SubtractTime, req.PowTime, req.DivRemainderTime}
-	max := slices.Max(arr)
+	resTime := strings.Count(req.Expression, "*")*int(req.MultiplyTime) + strings.Count(req.Expression, "+")*int(req.AddTime) +
+		strings.Count(req.Expression, "/")*int(req.DivideTime) + strings.Count(req.Expression, "-")*int(req.SubtractTime) +
+		strings.Count(req.Expression, "**")*int(req.PowTime) + strings.Count(req.Expression, "%")*int(req.DivRemainderTime)
 
-	return max
+	return int64(resTime)
 }

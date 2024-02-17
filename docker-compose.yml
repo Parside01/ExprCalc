@@ -1,16 +1,7 @@
 version: '3.9'
 
 services:
-  server:
-    depends_on: 
-      - redis
-      - rabbitmq
-    image: expr
-    container_name: expr
-    build: ./
-    command: ./main
-    ports:
-      - "8050:8050"
+
   rabbitmq:
     image: rabbitmq:3.10.7-management-alpine
     container_name: rabbitmq
@@ -25,3 +16,24 @@ services:
     ports:  
       - "6379:6379"  
     restart: always 
+
+  front:
+    build: 
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    container_name: front
+    ports:
+      - "80:80"
+
+  server:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on: 
+      - redis
+      - rabbitmq
+      - front
+    container_name: expr
+    command: ["/bin/sh", "-c", "/app/wait-for-it.sh rabbitmq:5672 -- /app/main"]
+    ports:
+      - "8050:8050"

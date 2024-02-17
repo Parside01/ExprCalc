@@ -8,9 +8,9 @@ logger:
   max-age: 30
   max-backups: 3
 mongo: 
-  uri: "mongodb://localhost:27017"
+  uri: "mongodb://mongodb:27017"
 redis: 
-  uri: "redis://localhost:6379"
+  uri: "redis://redis:6379"
 app: 
   password-min-length: 6
   access-token-expiration-time-minutes: 10
@@ -20,7 +20,7 @@ app:
   cache-ttl: 20
 
 rabbit:
-  uri: "amqp://guest:guest@localhost:5672/"
+  uri: "amqp://guest:guest@rabbitmq:5672/"
 
 expression-service:
   gorutines-count: 10

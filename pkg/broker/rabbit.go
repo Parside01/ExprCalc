@@ -21,6 +21,7 @@ func NewRabbit(logger *zap.Logger, config *config.RabbitMQConfig) *RabbitMQ {
 	}
 
 	rabbit.start()
+	rabbit.logger.Info("RabbitMQ connected to", zap.String("uri", config.URI))
 	return rabbit
 }
 
