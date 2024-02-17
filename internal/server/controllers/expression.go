@@ -9,6 +9,8 @@ import (
 	"encoding/json"
 	"net/http"
 	"slices"
+	"strconv"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 	amqp "github.com/rabbitmq/amqp091-go"
@@ -196,6 +198,58 @@ func (e *ExpressionController) getWorkersInfo(c echo.Context) error {
 		}
 
 		res = append(res, info)
+	}
+	return c.JSON(http.StatusOK, res)
+}
+
+func (e *ExpressionController) getAllExpressions(c echo.Context) error {
+	take, err := strconv.Atoi(c.QueryParams().Get("take"))
+	if err != nil {
+		e.logger.Error("ExpressionController.getAllExpressions: failed to get take param", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+	}
+
+	skip, err := strconv.Atoi(c.QueryParams().Get("skip"))
+	if err != nil {
+		e.logger.Error("ExpressionController.getAllExpressions: failed to get skip param", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+	}
+
+	keys, err := e.cache.GetAllKeysByPattern(c.Request().Context(), "*")
+	if err != nil {
+		e.logger.Error("ExpressionController.getAllExpressions: failed to get all expressions", zap.Error(err))
+		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+	}
+
+	res := []*models.Expression{}
+	s, t := 0, 0
+	for _, i := range keys {
+		if strings.Contains(i, "worker") {
+			continue
+		}
+		if s <= skip {
+			s++
+			continue
+		}
+		t++
+
+		f, err := e.cache.GetCache(c.Request().Context(), i)
+		if err != nil {
+			e.logger.Error("ExpressionController.getAllExpressions: failed to get expression", zap.Error(err))
+			return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+		}
+
+		var expr *models.Expression
+		err = json.Unmarshal([]byte(f.(string)), &expr)
+		if err != nil {
+			e.logger.Error("ExpressionController.getAllExpressions: failed to unmarshal expression", zap.Error(err))
+			return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
+		}
+		res = append(res, expr)
+
+		if t >= take {
+			break
+		}
 	}
 	return c.JSON(http.StatusOK, res)
 }

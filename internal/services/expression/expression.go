@@ -99,5 +99,6 @@ func (e *ExpressionService) handle(expr *models.Expression) {
 	time.Sleep(time.Duration(expr.ExpectExucuteTime) * time.Millisecond)
 
 	expr.ExecuteTime = time.Since(start).Milliseconds()
+	expr.IsDone = true
 	expr.Result = int(result.(float64))
 }
