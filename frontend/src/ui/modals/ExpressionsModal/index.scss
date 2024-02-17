@@ -1,0 +1,91 @@
+.modal__content {
+    padding: 0 !important;
+    padding-bottom: 15px !important;
+    .title {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        button {
+            border-radius: 50%;
+            border: none;
+            background-color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: 100ms;
+            &:hover {
+                background-color: #e6e6e6;
+                transition: 100ms;
+            }
+            span {
+                color: #353535;
+            }
+        }
+    }
+    .expressions {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-height: 700px;
+        min-height: 400px;
+        overflow: auto;
+        padding: 20px;
+        &::-webkit-scrollbar {
+            height: 5px;
+            width: 5px;
+        }
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #aaaaaa;
+            transition: 200ms;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #949494;
+            transition: 200ms;
+        }
+        .expression {
+            display: flex;
+            justify-content: space-between;
+            color: #4d4d4d;
+            font-size: 16px;
+            border: 1px solid #e3e3e3;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: 100ms;
+            &:hover {
+                background-color: #f6f6f6;
+                transition: 100ms;
+            }
+            .id {
+                margin-right: 50px;
+                max-width: 75px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .expression_string {
+                flex: 1;
+            }
+            .created {
+                margin-right: 30px;
+            }
+            .state {
+                color: #ec3838;
+                font-weight: 500;
+
+                &.completed {
+                    color: #24a12b;
+                }
+            }
+        }
+    }
+}

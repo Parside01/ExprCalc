@@ -4,7 +4,7 @@ import "encoding/json"
 
 type WorkerInfo struct {
 	WorkerID   string `json:"worker-id" mapstructure:"worker-id"`
-	LastTouch  string `json:"last-touch" mapstructure:"last-touch"`
+	LastTouch  string `json:"last-touch" mapstructure:"last-touch"` // когда в него последний раз что-то приходило и он этого отдавал
 	IsEmploy   bool   `json:"is-employ" mapstructure:"is-employ"`
 	CurrentJob string `json:"current-job" mapstructure:"current-job"`
 	PrevJob    string `json:"prev-job" mapstructure:"prev-job"`

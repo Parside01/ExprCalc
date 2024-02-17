@@ -7,6 +7,7 @@ import (
 	"ExprCalc/pkg/config"
 	"ExprCalc/pkg/repository/redisdb"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"slices"
 	"strconv"
@@ -205,6 +206,7 @@ func (e *ExpressionController) getWorkersInfo(c echo.Context) error {
 func (e *ExpressionController) getAllExpressions(c echo.Context) error {
 	take, err := strconv.Atoi(c.QueryParams().Get("take"))
 	if err != nil {
+		fmt.Println(c.Request().URL)
 		e.logger.Error("ExpressionController.getAllExpressions: failed to get take param", zap.Error(err))
 		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
 	}
@@ -227,7 +229,7 @@ func (e *ExpressionController) getAllExpressions(c echo.Context) error {
 		if strings.Contains(i, "worker") {
 			continue
 		}
-		if s <= skip {
+		if s < skip {
 			s++
 			continue
 		}
