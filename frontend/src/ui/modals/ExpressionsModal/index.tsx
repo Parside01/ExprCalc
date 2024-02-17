@@ -1,6 +1,6 @@
 import "./index.scss"
 import { BaseModal } from "../BaseModal"
-import { WorkerState, useExpressionsStore } from "src/store/expressionsStrore"
+import { ExpressionState, useExpressionsStore } from "src/store/expressionsStrore"
 import { useEffect } from "react"
 
 interface ExpressionsModalProps {
@@ -23,13 +23,13 @@ export const ExpressionsModal = ({ changer }: ExpressionsModalProps) => {
                         <span className="material-symbols-rounded">replay</span>
                     </button>
                 </span>
-                <div className="expressions">
+                <div className="expressions scroll-bar">
                     { expressionsStore.expressions.map((v: any) => (
                         <div key={v.id} className="expression">
                             <div className="id">{v.id}</div>
                             <div className="expression_string">{v.expression} = {v.result}</div>
                             <div className="created">{v.executionTime} ms</div>
-                            <div className={`state ${v.state === WorkerState.COMPLETED && "completed"}`}>{v.state === WorkerState.COMPLETED ? "Выполнено" : "Выполняется"}</div>
+                            <div className={`state ${v.state === ExpressionState.COMPLETED && "completed"}`}>{v.state === ExpressionState.COMPLETED ? "Выполнено" : "Выполняется"}</div>
                         </div>
                     )) }
                 </div>

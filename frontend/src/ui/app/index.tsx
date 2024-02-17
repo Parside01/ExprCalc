@@ -4,12 +4,12 @@ import SpeedModal from "../modals/SpeedModal";
 import { ExpressionsModal } from "../modals/ExpressionsModal";
 import { useExpressionsStore } from "src/store/expressionsStrore";
 import { useSettingsStore } from "src/store/settingsStore";
+import { ObserveWorkersModal } from "../modals/ObserveWorkersModal";
 
 export const App = () => {
     const [expression, setExpression] = useState("");
 
     const [viewSpeedModal, setViewSpeedModal] = useState(false);
-    const [viewSettingsModal, setViewSettingsModal] = useState(false);
     const [viewWorkersModal, setViewWorkersModal] = useState(false);
     const [viewTrakingModal, setViewTrakingModal] = useState(false);
 
@@ -38,11 +38,6 @@ export const App = () => {
                         <span className="material-symbols-rounded">speed</span>
                     </button>
                     <button
-                        onClick={() => setViewSettingsModal(!viewSettingsModal)}
-                    >
-                        <span className="material-symbols-rounded">settings</span>
-                    </button>
-                    <button
                         onClick={() => setViewWorkersModal(!viewWorkersModal)}
                     >
                         <span className="material-symbols-rounded">settings_backup_restore</span>
@@ -62,9 +57,9 @@ export const App = () => {
                 </div>
             </form>
             { viewSpeedModal && <SpeedModal changer={setViewSpeedModal} /> }
-            { viewSettingsModal && <SpeedModal changer={setViewSettingsModal} /> }
             { viewWorkersModal && <ExpressionsModal changer={setViewWorkersModal} /> }
-            { viewTrakingModal && <SpeedModal changer={setViewTrakingModal} /> }
+            { viewTrakingModal && <ObserveWorkersModal changer={setViewTrakingModal} /> }
+
         </div>
     )
 }

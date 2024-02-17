@@ -1,13 +1,16 @@
 package models
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"time"
+)
 
 type WorkerInfo struct {
-	WorkerID   string `json:"worker-id" mapstructure:"worker-id"`
-	LastTouch  string `json:"last-touch" mapstructure:"last-touch"` // когда в него последний раз что-то приходило и он этого отдавал
-	IsEmploy   bool   `json:"is-employ" mapstructure:"is-employ"`
-	CurrentJob string `json:"current-job" mapstructure:"current-job"`
-	PrevJob    string `json:"prev-job" mapstructure:"prev-job"`
+	WorkerID   string    `json:"worker-id" mapstructure:"worker-id"`
+	LastTouch  time.Time `json:"last-touch" mapstructure:"last-touch"` // когда в него последний раз что-то приходило и он этого отдавал
+	IsEmploy   bool      `json:"is-employ" mapstructure:"is-employ"`
+	CurrentJob string    `json:"current-job" mapstructure:"current-job"`
+	PrevJob    string    `json:"prev-job" mapstructure:"prev-job"`
 }
 
 func (w *WorkerInfo) MarshalBinary() ([]byte, error) {

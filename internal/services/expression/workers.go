@@ -55,7 +55,7 @@ func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models
 
 	err := worker.cache.WriteCacheWithTTL(worker.ctx, fmt.Sprintf("woker-%s", worker.id), &models.WorkerInfo{
 		WorkerID:   worker.id,
-		LastTouch:  time.Now().String(),
+		LastTouch:  time.Now(),
 		IsEmploy:   worker.isEmploy,
 		CurrentJob: worker.currJob,
 		PrevJob:    worker.prevJob,
@@ -94,7 +94,7 @@ func (w *worker) startCacheLoop(ticker *time.Ticker) {
 		case <-ticker.C:
 			err := w.cache.WriteCacheWithTTL(w.ctx, fmt.Sprintf("worker-%s", w.id), &models.WorkerInfo{
 				WorkerID:   w.id,
-				LastTouch:  w.lastTouch.String(),
+				LastTouch:  w.lastTouch,
 				IsEmploy:   w.isEmploy,
 				CurrentJob: w.currJob,
 				PrevJob:    w.prevJob,
@@ -139,6 +139,7 @@ func (w *worker) proccessExpression(input amqp.Delivery) {
 		return
 	}
 
+	time.Sleep(time.Duration(expr.ExpectExucuteTime) * time.Millisecond)
 	input.Ack(false)
 }
 

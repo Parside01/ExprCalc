@@ -12,6 +12,26 @@ body {
     background-color: #f5f5f5;
 }
 
+.scroll-bar {
+    &::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #aaaaaa;
+        transition: 200ms;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #949494;
+        transition: 200ms;
+    }
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -73,10 +93,17 @@ body {
     
     .form__submit {
         border-radius: 10px;
-        border: 0.5px solid #ccc;
-        font-size: 14px;
-        width: 25%;
+        border: 1px solid #ccc;
         padding: 7px 1px 7px 1px;
+        width: 160px;
+        font-size: 16px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 100ms;
+        &:hover{
+            transition: 100ms;
+            background-color: #e6e6e6;
+        }
     }
     
     .options {
@@ -92,10 +119,11 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 20px;
+            margin: 0 20px;
             width: 40px;
             height: 40px;
             transition: 100ms;
+            cursor: pointer;
             &:hover {
                 background-color: #e6e6e6;
                 transition: 100ms;
