@@ -105,6 +105,8 @@ func (e *ExpressionService) handle(expr *models.Expression) {
 			expr.Result = res
 			expr.IsDone = true
 			e.cache.WriteCache(ctx, expr.Expression, expr)
+		case <-ctx.Done():
+			return
 		}
 	}(context.Background(), start, expr, result.(float64))
 }

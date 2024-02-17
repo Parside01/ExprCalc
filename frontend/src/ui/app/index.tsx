@@ -53,6 +53,7 @@ export const App = () => {
                     <button
                         onClick={async () => (await expressionsStore.sendExpression(expression, speedSettings), setExpression(""))}
                         className="form__submit"
+                        disabled={!(!!expression.lenght)}
                     >Submit</button>
                 </div>
             </form>
