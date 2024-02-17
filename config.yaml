@@ -17,7 +17,7 @@ app:
   refresh-token-expiration-time-minutes: 10
   token-secret: "secret"
   local-storage-path: "pkg/repository/local/Storage"
-  cache-ttl: 
+  cache-ttl: 10
 
 rabbit:
   uri: "amqp://guest:guest@localhost:5672/"

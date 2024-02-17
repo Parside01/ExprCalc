@@ -7,6 +7,7 @@ type WorkerInfo struct {
 	LastTouch  string `json:"last-touch" mapstructure:"last-touch"`
 	IsEmploy   bool   `json:"is-employ" mapstructure:"is-employ"`
 	CurrentJob string `json:"current-job" mapstructure:"current-job"`
+	PrevJob    string `json:"prev-job" mapstructure:"prev-job"`
 }
 
 func (w *WorkerInfo) MarshalBinary() ([]byte, error) {

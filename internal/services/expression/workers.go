@@ -19,6 +19,7 @@ type worker struct {
 	isEmploy   bool
 	lastTouch  time.Time
 	currJob    string
+	prevJob    string
 	logger     *zap.Logger
 	wg         *conc.WaitGroup //так на будущее
 	handler    func(*models.Expression)
@@ -45,6 +46,7 @@ func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models
 		infoUpdate: infoUpdate,
 		isEmploy:   false,
 		currJob:    "",
+		prevJob:    "",
 	}
 
 	worker.inputExpr = input
@@ -56,6 +58,7 @@ func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models
 		LastTouch:  time.Now().String(),
 		IsEmploy:   worker.isEmploy,
 		CurrentJob: worker.currJob,
+		PrevJob:    worker.prevJob,
 	}, infoUpdate)
 
 	if err != nil {
@@ -82,6 +85,9 @@ func (w *worker) startExprLoop() {
 	}
 }
 
+/*
+*	Возможно стоит обновлять только когда был использован, пусть пока так будет.
+ */
 func (w *worker) startCacheLoop(ticker *time.Ticker) {
 	for {
 		select {
@@ -91,6 +97,7 @@ func (w *worker) startCacheLoop(ticker *time.Ticker) {
 				LastTouch:  w.lastTouch.String(),
 				IsEmploy:   w.isEmploy,
 				CurrentJob: w.currJob,
+				PrevJob:    w.prevJob,
 			}, w.infoUpdate)
 			if err != nil {
 				w.logger.Error(fmt.Sprintf("worker.startCacheLoop: failed to write cache in worker %s", w.id), zap.Error(err))
@@ -138,5 +145,6 @@ func (w *worker) proccessExpression(input amqp.Delivery) {
 func (w *worker) onWaitState() {
 	w.isEmploy = false
 	w.lastTouch = time.Now()
+	w.prevJob = w.currJob
 	w.currJob = ""
 }

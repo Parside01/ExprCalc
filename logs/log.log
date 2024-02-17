@@ -406,3 +406,15 @@
 {"level":"info","ts":1708096085.8266513,"msg":"Starting server","addr":"0.0.0.0:8050"}
 {"level":"info","ts":1708096107.076859,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
 {"level":"info","ts":1708096107.2242136,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708148227.3240204,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708148227.4799333,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708148323.1345644,"msg":"{\"result\":0,\"expression\":\"2 ** 4 + 38\",\"guid\":\"1f44212745f19a69c7504511eafd4358\",\"execute-time\":0,\"expect-execute-time\":1100,\"err\":null,\"is-done\":false,\"worker-id\":\"\"}","Пришло в worker":"ea0d0592941e71a5974f72c2ade16cab"}
+{"level":"info","ts":1708148436.2350798,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708148436.3881793,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708148444.1671247,"msg":"{\"result\":0,\"expression\":\"2 ** 5 + 38\",\"guid\":\"86c9ca91c5e019d7d4071eb649bc9aaa\",\"execute-time\":0,\"expect-execute-time\":1100,\"err\":null,\"is-done\":false,\"worker-id\":\"\"}","Пришло в worker":"0450e187bd936665406860dd6a0db6b4"}
+{"level":"info","ts":1708148853.9640646,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708148854.1077352,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708148864.280407,"msg":"{\"result\":0,\"expression\":\"2 ** 6 + 38\",\"guid\":\"094933e073b4c7a5c872aee8202e1fbd\",\"execute-time\":0,\"expect-execute-time\":1100,\"err\":null,\"is-done\":false,\"worker-id\":\"\"}","Пришло в worker":"db52c56dcb597defa5b9dfa301ba6c5c"}
+{"level":"info","ts":1708148988.1007729,"msg":"redis.Open: connected to redis","URI":"redis://localhost:6379"}
+{"level":"info","ts":1708148988.2377086,"msg":"Starting server","addr":"0.0.0.0:8050"}
+{"level":"info","ts":1708148997.6079266,"msg":"{\"result\":0,\"expression\":\"2 ** 15 + 38\",\"guid\":\"2bbf2a0ce92dfd6c432b3408c802ff6a\",\"execute-time\":0,\"expect-execute-time\":1100,\"err\":null,\"is-done\":false,\"worker-id\":\"\"}","Пришло в worker":"c9fecaaab883fa297244685be535d2ff"}

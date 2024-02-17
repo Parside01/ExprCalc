@@ -7,8 +7,8 @@ import (
 	"ExprCalc/pkg/config"
 	"ExprCalc/pkg/repository/redisdb"
 	"encoding/json"
-	"fmt"
 	"net/http"
+	"slices"
 
 	"github.com/labstack/echo/v4"
 	amqp "github.com/rabbitmq/amqp091-go"
@@ -25,7 +25,13 @@ type ExpressionController struct {
 }
 
 type Request struct {
-	Expression string `json:"expr"`
+	Expression       string `json:"expr"`
+	MultiplyTime     int64  `json:"*"`
+	AddTime          int64  `json:"+"`
+	DivideTime       int64  `json:"/"`
+	SubtractTime     int64  `json:"-"`
+	PowTime          int64  `json:"**"`
+	DivRemainderTime int64  `json:"%"`
 }
 
 type Response struct {
@@ -70,6 +76,11 @@ func (e *ExpressionController) GetHandlers() []ControllerHandler {
 			Path:    "/getWorkersInfo",
 			Handler: e.getWorkersInfo,
 		},
+		&Handler{
+			Method:  "GET",
+			Path:    "/getAllExpressions",
+			Handler: e.getAllExpressions,
+		},
 	}
 }
 
@@ -111,7 +122,10 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 		return c.JSON(http.StatusOK, &Response{Expr: expr, Err: nil, Ok: true})
 	}
 
-	body, err := models.NewExpression(req.Expression).MarshalBinary()
+	expr := models.NewExpression(req.Expression)
+	expr.ExpectExucuteTime = CalcExecurteTime(req)
+
+	body, err := expr.MarshalBinary()
 	if err != nil {
 		e.logger.Error("ExpressionController.calcHandler: failed to marshal expression", zap.Error(err))
 		return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
@@ -143,7 +157,8 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 					e.logger.Error("ExpressionController.calcHandler: failed to unmarshal expression", zap.Error(err))
 					return c.JSON(http.StatusInternalServerError, &Response{Err: err, Ok: false})
 				}
-				fmt.Println(expr, "Пришло в calcHandler")
+
+				expr.IsDone = true
 				msg.Ack(false)
 
 				return c.JSON(http.StatusOK, &Response{Expr: expr, Err: nil, Ok: true})
@@ -154,6 +169,10 @@ func (e *ExpressionController) calcHandler(c echo.Context) error {
 	}
 }
 
+/*
+*	В каждом воркере есть штука которая записывает информацию о нем в редиску.
+* 	Вот эту информацию находим и отдаем.
+ */
 func (e *ExpressionController) getWorkersInfo(c echo.Context) error {
 	keys, err := e.cache.GetAllKeysByPattern(c.Request().Context(), "worker")
 	if err != nil {
@@ -221,4 +240,11 @@ func (e *ExpressionController) setupRabbit() error {
 	}()
 
 	return nil
+}
+
+func CalcExecurteTime(req Request) int64 {
+	arr := []int64{req.MultiplyTime, req.AddTime, req.DivideTime, req.SubtractTime, req.PowTime, req.DivRemainderTime}
+	max := slices.Max(arr)
+
+	return max
 }
