@@ -84,20 +84,33 @@ You can also monitor every worker in the system
 #### Frontend
 - HTML
 - CSS
-- [ReactJS](https://reactjs.org/) <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="40">
+- [ReactJS](https://reactjs.org/) <br>
+
+<a href="https://reactjs.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="45" style="margin-left:20px;"> </a>
 
 #### Backend
-- [Golang](https://golang.org/) <img src="https://blog.golang.org/go-brand/Go-Logo/SVG/Go-Logo_Aqua.svg" width="40">
-- Фреймворк: [Echo](https://github.com/labstack/echo) <img src="https://avatars.githubusercontent.com/u/18666616?s=200&v=4" width="40">
 
-#### Microservices
-- Message-broker: [RabbitMQ](https://www.rabbitmq.com/) <img src="https://storage.yandexcloud.net/media.ref-model.ru/Rabbit_MQ_logo_67175cb0a9.png" width="40">
+- [Golang](https://golang.org/): <br>
+  
+<a href="https://golang.org/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/768px-Go_Logo_Blue.svg.png" width="70" style="margin-left:10px;"> </a>
 
-#### Database
-- [Redis](https://redis.io/) <img src="https://raw.githubusercontent.com/redis/redis-io/8407239da448d843968d53a412e9c84138a60f1c/public/images/redis-logo.svg" width="40">
+- [Go-echo](https://github.com/labstack/echo): <br> 
 
+<a href="https://github.com/labstack/echo"><img src="https://camo.githubusercontent.com/794ace8f539408352061bb193fce26a0df05bed29d57d2125968fa99143b67cd/68747470733a2f2f63646e2e6c6162737461636b2e636f6d2f696d616765732f6563686f2d6c6f676f2e737667" width="100" style="margin-left:20px;"></a>
+
+- [RabbitMQ](https://www.rabbitmq.com/) <br>
+
+<a href="https://www.rabbitmq.com/what-is-rabbitmq.html"><img src="https://storage.yandexcloud.net/media.ref-model.ru/Rabbit_MQ_logo_67175cb0a9.png" width="110" style="margin-left:25px;"><a>
+
+- [Redis](https://redis.io/) <br> 
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Logo-redis.svg/330px-Logo-redis.svg.png" width="100" style="margin-left:25px;">
+ 
 #### Docker
-- [Docker](https://www.docker.com/) <img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="40">
+- [Docker](https://www.docker.com/) <br>
+
+<a href="https://www.docker.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/330px-Docker_%28container_engine%29_logo.svg.png" width="120"
+style="margin-left:25px;"> </a>
 
 
 
