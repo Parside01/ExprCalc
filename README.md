@@ -94,10 +94,10 @@ You can also monitor every worker in the system
 - Message-broker: [RabbitMQ](https://www.rabbitmq.com/) <img src="https://storage.yandexcloud.net/media.ref-model.ru/Rabbit_MQ_logo_67175cb0a9.png" width="40">
 
 #### Database
-- [Redis](https://redis.io/) <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="40">
+- [Redis](https://redis.io/) <img src="https://w7.pngwing.com/pngs/945/919/png-transparent-redis-plain-wordmark-logo-icon.png" width="40">
 
 #### Docker
-- [Docker](https://www.docker.com/) <img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="20">
+- [Docker](https://www.docker.com/) <img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="40">
 
 
 
