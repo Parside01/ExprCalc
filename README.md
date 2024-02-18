@@ -48,4 +48,38 @@ docker-compose up --build
 ```
 
 
-It is worth noting that it is better to launch in Docker, if you do not want to do this through Docker, then you will have to change the standard application config. 
+## After launch
+
+click on the link http://localhost:80
+
+#### Roadmap
+
+When you log in to the app, this will be waiting for you
+
+![App Screenshot](./screenshots/home-screen.png)
+
+You can enter a mathematical expression in the input field
+
+![App Screenshot](./screenshots/example.png)
+
+Before that, you can set the execution speed of each of the supported mathematical operations
+
+![App Screenshot](./screenshots/options.png)
+
+By clicking on the button, you send the expression to the server that processes it, you can monitor the state of the expression
+
+![App Screenshot](./screenshots/tasks.png)
+
+You can also monitor every worker in the system
+
+![App Screenshot](./screenshots/worker-monitoring.png)
+
+
+
+
+
+
+
+
+
+
