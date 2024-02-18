@@ -2,7 +2,7 @@
 
 The final project of the second sprint from YandexLMS
 
-
+Если вы не владеете английским то можете перейти `README_ru.md`
 
 
 ## Application Configuration

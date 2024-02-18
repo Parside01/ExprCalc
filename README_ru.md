@@ -70,7 +70,7 @@ docker-compose up --build
 
 Вы также можете отслеживать каждого работника в системе
 
-![App Screenshot](./screenshots/workers.png)
+![App Screenshot](./screenshots/worker-monitoring.png)
 
 
 ## Как это работает
