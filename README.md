@@ -38,7 +38,7 @@ git clone https://github.com/Parside01/ExprCalc.git
 Go to the project directory
 
 ```bash
-cd ExprCalcS
+cd ExprCalc
 ```
 
 Launching the application in Docker
@@ -76,8 +76,28 @@ You can also monitor every worker in the system
 
 
 
+## How it works
+
+#### Technology stack
 
 
+#### Frontend
+- HTML
+- CSS
+- [ReactJS](https://reactjs.org/) <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="20">
+
+#### Backend
+- [Golang](https://golang.org/) <img src="https://blog.golang.org/go-brand/Go-Logo/SVG/Go-Logo_Aqua.svg" width="20">
+- Фреймворк: [Echo](https://github.com/labstack/echo) <img src="https://avatars.githubusercontent.com/u/18666616?s=200&v=4" width="20">
+
+#### Microservices
+- Система сообщений: [RabbitMQ](https://www.rabbitmq.com/) <img src="https://www.rabbitmq.com/img/rabbitmq-logo.svg" width="20">
+
+#### Database
+- [Redis](https://redis.io/) <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="20">
+
+#### Docker
+- [Docker](https://www.docker.com/) <img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="20">
 
 
 
