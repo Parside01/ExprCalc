@@ -92,25 +92,25 @@ You can also monitor every worker in the system
 
 - [Golang](https://golang.org/): <br>
   
-<a href="https://golang.org/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/768px-Go_Logo_Blue.svg.png" width="70" style="margin-left:10px;"> </a>
+<a href="https://golang.org/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/768px-Go_Logo_Blue.svg.png" width="70" style="margin-left:2%;"> </a>
 
 - [Go-echo](https://github.com/labstack/echo): <br> 
 
-<a href="https://github.com/labstack/echo"><img src="https://camo.githubusercontent.com/794ace8f539408352061bb193fce26a0df05bed29d57d2125968fa99143b67cd/68747470733a2f2f63646e2e6c6162737461636b2e636f6d2f696d616765732f6563686f2d6c6f676f2e737667" width="100" style="margin-left:20px;"></a>
+<a href="https://github.com/labstack/echo"><img src="https://camo.githubusercontent.com/794ace8f539408352061bb193fce26a0df05bed29d57d2125968fa99143b67cd/68747470733a2f2f63646e2e6c6162737461636b2e636f6d2f696d616765732f6563686f2d6c6f676f2e737667" width="100" style="margin-left:2.5%;"></a>
 
 - [RabbitMQ](https://www.rabbitmq.com/) <br>
 
-<a href="https://www.rabbitmq.com/what-is-rabbitmq.html"><img src="https://storage.yandexcloud.net/media.ref-model.ru/Rabbit_MQ_logo_67175cb0a9.png" width="110" style="margin-left:25px;"><a>
+<a href="https://www.rabbitmq.com/what-is-rabbitmq.html"><img src="https://storage.yandexcloud.net/media.ref-model.ru/Rabbit_MQ_logo_67175cb0a9.png" width="110" style="margin-left:2.5%;"><a>
 
 - [Redis](https://redis.io/) <br> 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Logo-redis.svg/330px-Logo-redis.svg.png" width="100" style="margin-left:25px;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Logo-redis.svg/330px-Logo-redis.svg.png" width="100" style="margin-left:2.5%;">
  
 #### Docker
 - [Docker](https://www.docker.com/) <br>
 
 <a href="https://www.docker.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/330px-Docker_%28container_engine%29_logo.svg.png" width="120"
-style="margin-left:25px;"> </a>
+style="margin-left:2.5%;"> </a>
 
 
 
