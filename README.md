@@ -107,7 +107,7 @@ style="margin-left:7.5%;"> </a>
 
 ## Feedback
 
-if you have any feedback or problems with app, please [open an issue](https://github.com/Parside01/ExprCalc/issues/new)
+if you have any feedback or problems with app, please [open an issue](https://github.com/Parside01/ExprCalc/issues/new) or you can write to me on Telegram @parside12
 
 #### Contributors
 + [Parside01](https://github.com/Parside01) :scream_cat:
