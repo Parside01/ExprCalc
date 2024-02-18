@@ -27,6 +27,11 @@ type ExpressionService struct {
 	listenExpr <-chan amqp.Delivery
 }
 
+/*
+*	Возможно надо было сделать в отдельном модуле.
+*	Всем же так нравится горизонтальное масштабирование.
+*	Но я пожалею вашу оперативку и оставлю так (1 контейнер будет +- 600мб)
+ */
 func NewExpressionService(logger *zap.Logger, cfg *config.ExpressionServiceConfig, rabbit *broker.RabbitMQ, cache *redisdb.RedisDB) (*ExpressionService, error) {
 	service := &ExpressionService{
 		logger:  logger,
@@ -35,6 +40,8 @@ func NewExpressionService(logger *zap.Logger, cfg *config.ExpressionServiceConfi
 		cache:   cache,
 		rabbit:  rabbit,
 	}
+
+	// Что-то пошло не так == отвал башки.
 	err := service.start()
 	if err != nil {
 		logger.Fatal("ExpressionService.NewExpressionService: failed to start expression service", zap.Error(err))
@@ -48,6 +55,10 @@ func (e *ExpressionService) start() error {
 
 	return err
 }
+
+/*
+*	Запускаем воркеры, которые представляют оболочку надо горутинами, которые обрабатывают то что приходит в RabbitMQ.
+ */
 func (e *ExpressionService) setupWorkers() {
 	for i := 0; i < e.config.GourutinesCount; i++ {
 		worker := newWorker(e.logger, e.rabbit, e.handle, e.listenExpr, time.Duration(e.config.WorkerInfoUpdate*int(time.Second)), e.cache)
@@ -59,6 +70,12 @@ func (e *ExpressionService) setupWorkers() {
 	}
 }
 
+/*
+*	Вы можете спросить меня нафига это надо везде.
+*	Я не придумал как это сделать в виде короткой функции внутри broker.
+*	По факту просто настраиваем соединение с RabbitMQ.
+*	Если что-то поменять то оно отвалится. Сколько я раз пожалел что не gRPC
+ */
 func (e *ExpressionService) setupRabbit() error {
 	q, err := e.rabbit.Ch.QueueDeclare(e.config.ExpressionQueue, false, false, false, false, nil)
 	if err != nil {
@@ -98,6 +115,10 @@ func (e *ExpressionService) handle(expr *models.Expression) {
 		return
 	}
 
+	/*
+	*	Хах. Мы уже все подсчитали и отдали, но запишим это в базу только через некоторое время.
+	*	Только после этого сервак будет знать что все готово).
+	 */
 	go func(ctx context.Context, start time.Time, expr *models.Expression, res float64) {
 		select {
 		case <-time.After(time.Duration(expr.ExpectExucuteTime) * time.Millisecond):

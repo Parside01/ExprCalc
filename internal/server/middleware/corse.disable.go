@@ -6,6 +6,9 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+/*
+*	Противная фигня. Но без не ничего не будет работать.
+ */
 func CorseDisable() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {

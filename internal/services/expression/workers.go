@@ -14,6 +14,10 @@ import (
 	"go.uber.org/zap"
 )
 
+/*
+*	К этим ребятам у меня особое уважение.
+* 	Они делают основную работу.
+ */
 type worker struct {
 	id         string
 	isEmploy   bool
@@ -27,7 +31,7 @@ type worker struct {
 	inputExpr  <-chan amqp.Delivery
 	rabbit     *broker.RabbitMQ
 	infoUpdate time.Duration
-	ctx        context.Context    //да да не очень хорошая практика.
+	ctx        context.Context    //да да не очень хорошая практика. В теории с помощью него можно точечно отключать их.
 	cancel     context.CancelFunc // и это тоже.
 }
 
@@ -53,6 +57,7 @@ func newWorker(logger *zap.Logger, rabbit *broker.RabbitMQ, handler func(*models
 	go worker.startExprLoop()
 	go worker.startCacheLoop(time.NewTicker(infoUpdate))
 
+	// Создали воркер - сказали что он существует.
 	err := worker.cache.WriteCacheWithTTL(worker.ctx, fmt.Sprintf("woker-%s", worker.id), &models.WorkerInfo{
 		WorkerID:   worker.id,
 		LastTouch:  time.Now(),
@@ -143,6 +148,7 @@ func (w *worker) proccessExpression(input amqp.Delivery) {
 	input.Ack(false)
 }
 
+// Переключаем воркер на состояние ожидания.
 func (w *worker) onWaitState() {
 	w.isEmploy = false
 	w.lastTouch = time.Now()

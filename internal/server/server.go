@@ -63,6 +63,7 @@ func (s *Server) RegisterRouters(routes []controllers.Controller) {
 /*
 *	Пока не нужна.
 * 	Есть какая-то проблема что при запуске выдает панику.
+*	Так что будет зомби кодом.
  */
 func (s *Server) ConfigurateMongo(config *config.MongoDBConfig) {
 	m := mongo.New(config, s.Logger)

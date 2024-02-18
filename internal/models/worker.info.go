@@ -5,6 +5,9 @@ import (
 	"time"
 )
 
+/*
+*	Та информация о воркерах которую будет видеть сервак в кэше.
+ */
 type WorkerInfo struct {
 	WorkerID   string    `json:"worker-id" mapstructure:"worker-id"`
 	LastTouch  time.Time `json:"last-touch" mapstructure:"last-touch"` // когда в него последний раз что-то приходило и он этого отдавал
