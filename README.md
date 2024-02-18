@@ -3,28 +3,6 @@
 The final project of the second sprint from YandexLMS
 
 
-## Run Locally
-
-Clone the project
-
-```bash
-git clone https://github.com/Parside01/ExprCalc.git
-```
-
-Go to the project directory
-
-```bash
-cd ExprCalcS
-```
-
-Launching the application in Docker
-
-```bash
-docker-compose up --build
-```
-
-
-It is worth noting that it is better to launch in Docker, if you do not want to do this through Docker, then you will have to change the standard application config. 
 
 
 ## Application Configuration
@@ -48,3 +26,26 @@ Before you run everything in Docker, you can play around with the application co
 | `exchange`       | `string` | **Required**. The name of the exchanger for rabbitmq|
 | `route-key`      | `string` | **Required**. The name of the unique key that will be used to send messages to rabbitmq|
 |`worker-info-update`| `int` |  **Required**. The time in seconds after which the server will ping the workers|
+
+## Run Locally
+
+Clone the project
+
+```bash
+git clone https://github.com/Parside01/ExprCalc.git
+```
+
+Go to the project directory
+
+```bash
+cd ExprCalcS
+```
+
+Launching the application in Docker
+
+```bash
+docker-compose up --build
+```
+
+
+It is worth noting that it is better to launch in Docker, if you do not want to do this through Docker, then you will have to change the standard application config. 
