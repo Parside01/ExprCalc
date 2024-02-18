@@ -111,4 +111,3 @@ if you have any feedback or problems with app, please [open an issue](https://gi
 
 #### Contributors
 + [Parside01](https://github.com/Parside01) :scream_cat:
-+ [Kneepy](https://github.com/Kneepy) :japanese_goblin:

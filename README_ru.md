@@ -108,4 +108,3 @@ style="margin-left:7.5%;"> </a>
 
 #### Авторы
 + [Parside01](https://github.com/Parside01) :scream_cat:
-+ [Kneepy](https://github.com/Kneepy) :japanese_goblin:
