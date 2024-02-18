@@ -29,7 +29,8 @@ export interface Worker {
 
 export interface ExpressionsState {
     expressions: Expression[],
-    workers: Worker[]
+    workers: Worker[],
+    error: string,
     getExpressions({ take, skip }: { take: number, skip: number }): Promise<void>
     sendExpression(expression: string, settings: SpeedExpressionsSettings): Promise<void>
     getWorkersInfo(): Promise<void>
@@ -38,6 +39,7 @@ export interface ExpressionsState {
 export const useExpressionsStore = create<ExpressionsState>((set) => ({
     expressions: [],
     workers: [],
+    error: "",
 
     async getExpressions({ take, skip }: { take: number, skip: number }) {
         try {
