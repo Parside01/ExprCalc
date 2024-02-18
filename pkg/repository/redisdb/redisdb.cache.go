@@ -6,6 +6,9 @@ import (
 	"time"
 )
 
+/*
+*	Хоть название метода и подразумевает запись без использования ttl, но оно будет если в конфиге стоит не 0.
+ */
 func (r *RedisDB) WriteCache(ctx context.Context, key string, value interface{}) error {
 	r.mutex.RLock()
 	defer r.mutex.RUnlock()

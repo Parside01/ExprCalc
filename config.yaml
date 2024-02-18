@@ -7,21 +7,14 @@ logger:
   max-size: 100
   max-age: 30
   max-backups: 3
-mongo: 
-  uri: "mongodb://mongodb:27017"
 redis: 
   uri: "redis://redis:6379"
-app: 
-  password-min-length: 6
-  access-token-expiration-time-minutes: 10
-  refresh-token-expiration-time-minutes: 10
-  token-secret: "secret"
-  local-storage-path: "pkg/repository/local/Storage"
-  cache-ttl: 20
 
 rabbit:
   uri: "amqp://guest:guest@rabbitmq:5672/"
 
+app: 
+  cache-ttl: 20
 expression-service:
   gorutines-count: 10
   expr-queue: "expression"

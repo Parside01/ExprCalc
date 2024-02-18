@@ -41,11 +41,7 @@ type LoggerConfig struct {
 }
 
 type AppConfig struct {
-	PasswordMinLength int    `mapstructure:"password-min-length" yaml:"password-min-length"`
-	AccessTokenTTL    int    `mapstructure:"access-token-ttl" yaml:"access-token-ttl"`   // in minutes
-	RefreshTokenTTL   int    `mapstructure:"refresh-token-ttl" yaml:"refresh-token-ttl"` // in minutes
-	TokenSecret       string `mapstructure:"token-secret" yaml:"token-secret"`
-	CacheTTL          int    `mapstructure:"cache-ttl" yaml:"cache-ttl"`
+	CacheTTL int `mapstructure:"cache-ttl" yaml:"cache-ttl"`
 }
 
 type Config struct {
@@ -85,10 +81,6 @@ func setDefaults(v *viper.Viper) {
 
 	v.SetDefault("redis.uri", "localhost:6379")
 
-	v.SetDefault("app.password-min-length", 8)
-	v.SetDefault("app.access-token-ttl", 15)
-	v.SetDefault("app.refresh-token-ttl", 60)
-	v.SetDefault("app.token-secret", "secret")
 	v.SetDefault("app.cache-ttl", 10)
 
 	v.SetDefault("expression-service.expr-queue", "input")

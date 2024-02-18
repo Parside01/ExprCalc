@@ -14,7 +14,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-    cd ExprCalc
+    cd ExprCalcS
 ```
 
 Launching the application in Docker
@@ -24,4 +24,16 @@ Launching the application in Docker
 ```
 
 
-It is worth noting that it is better to launch in Docker, if you do not want to do this through Docker, then you will have to change the standard application config
+It is worth noting that it is better to launch in Docker, if you do not want to do this through Docker, then you will have to change the standard application config. 
+
+
+## Application Configuration
+
+Before you run everything in Docker, you can play around with the application config ./config.yaml
+
+`expression-service` and `app` - the part of the config that you can interact with. It contains the following fields
+
+### app
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `cache-ttl` | `int` | **Required**. The time in minutes that '\n' expressions will be stored in the DBMS. If it is not necessary, set 0 |
