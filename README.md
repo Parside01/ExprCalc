@@ -91,7 +91,7 @@ You can also monitor every worker in the system
 - Фреймворк: [Echo](https://github.com/labstack/echo) <img src="https://avatars.githubusercontent.com/u/18666616?s=200&v=4" width="40">
 
 #### Microservices
-- Система сообщений: [RabbitMQ](https://www.rabbitmq.com/) <img src="https://www.rabbitmq.com/img/rabbitmq-logo.svg" width="40">
+- Message-broker: [RabbitMQ](https://www.rabbitmq.com/) <img src="https://storage.yandexcloud.net/media.ref-model.ru/Rabbit_MQ_logo_67175cb0a9.png" width="40">
 
 #### Database
 - [Redis](https://redis.io/) <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="40">
