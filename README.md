@@ -84,17 +84,17 @@ You can also monitor every worker in the system
 #### Frontend
 - HTML
 - CSS
-- [ReactJS](https://reactjs.org/) <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="20">
+- [ReactJS](https://reactjs.org/) <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="40">
 
 #### Backend
-- [Golang](https://golang.org/) <img src="https://blog.golang.org/go-brand/Go-Logo/SVG/Go-Logo_Aqua.svg" width="20">
-- Фреймворк: [Echo](https://github.com/labstack/echo) <img src="https://avatars.githubusercontent.com/u/18666616?s=200&v=4" width="20">
+- [Golang](https://golang.org/) <img src="https://blog.golang.org/go-brand/Go-Logo/SVG/Go-Logo_Aqua.svg" width="40">
+- Фреймворк: [Echo](https://github.com/labstack/echo) <img src="https://avatars.githubusercontent.com/u/18666616?s=200&v=4" width="40">
 
 #### Microservices
-- Система сообщений: [RabbitMQ](https://www.rabbitmq.com/) <img src="https://www.rabbitmq.com/img/rabbitmq-logo.svg" width="20">
+- Система сообщений: [RabbitMQ](https://www.rabbitmq.com/) <img src="https://www.rabbitmq.com/img/rabbitmq-logo.svg" width="40">
 
 #### Database
-- [Redis](https://redis.io/) <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="20">
+- [Redis](https://redis.io/) <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="40">
 
 #### Docker
 - [Docker](https://www.docker.com/) <img src="https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width="20">
